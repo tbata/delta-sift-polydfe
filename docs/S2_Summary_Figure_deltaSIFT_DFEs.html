@@ -495,16 +495,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong66965e5"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 66965e5 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong4801061"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 4801061 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong66965e5" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrong4801061" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 66965e5. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version 4801061. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -564,6 +564,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -617,6 +634,43 @@ dim(dfe_sift)</code></pre>
 <pre class="r"><code>qplot(log10(dfe_sift$eps), bins=20) + xlab(&quot;rate of SNP polarization error (eps_anc)&quot;)+theme_minimal(base_size = 16)</code></pre>
 <pre><code>Warning: Removed 6 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/overall_eps-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overall_eps-1">
+Past versions of overall_eps-1.png
+</button>
+</p>
+<div id="fig-overall_eps-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>names(dfe_sift)</code></pre>
 <pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;cat04&quot;       &quot;from&quot;       
  [6] &quot;to&quot;          &quot;mutation&quot;    &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
@@ -644,6 +698,43 @@ dim(dfe_sift)</code></pre>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
 `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/overall_eps-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overall_eps-2">
+Past versions of overall_eps-2.png
+</button>
+</p>
+<div id="fig-overall_eps-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>dfe_sift %&gt;%
   filter(nsyn_counts&gt;100) %&gt;%
   ggplot(aes(x=delta, y = log10(eps + 0.000001), color=species, size = sqrt(nsyn_counts), weight=sqrt(1+nsyn_counts) ))+ 
@@ -663,6 +754,43 @@ dim(dfe_sift)</code></pre>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
 `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="filtering-data-before-figure" class="section level1">
 <h1>Filtering data before figure</h1>
@@ -704,6 +832,43 @@ dim(dfe_sift)</code></pre>
   NULL</code></pre>
 <pre><code>Saving 7 x 5 in image</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="the-mere-proportion-p_b" class="section level3">
 <h3>the mere proportion <span class="math inline">\(p_b\)</span></h3>
@@ -738,6 +903,43 @@ dim(dfe_sift)</code></pre>
   NULL</code></pre>
 <pre><code>Saving 7 x 5 in image</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="binning-of-dfe-by-n_e-s" class="section level1">
@@ -780,6 +982,43 @@ number 0</code></pre>
 as.matrix(model.frame(delete.response(terms(object)), : There are other near
 singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>dfe_sift %&gt;% 
   filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D2,  weight= 1+nsyn_counts)) + 
@@ -815,6 +1054,43 @@ number 0</code></pre>
 as.matrix(model.frame(delete.response(terms(object)), : There are other near
 singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-2">
+Past versions of unnamed-chunk-5-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>dfe_sift %&gt;% 
   filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D3,  weight= 1+nsyn_counts)) + 
@@ -828,6 +1104,43 @@ singularities as well. 1</code></pre>
   theme(legend.position = &quot;none&quot;)+
   NULL</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-3">
+Past versions of unnamed-chunk-5-3.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>dfe_sift %&gt;% 
   filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D4+D5,  weight= 1+nsyn_counts)) + 
@@ -863,6 +1176,43 @@ number 0</code></pre>
 as.matrix(model.frame(delete.response(terms(object)), : There are other near
 singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-4.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-4">
+Past versions of unnamed-chunk-5-4.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="overall-figure-combining" class="section level1">
@@ -918,6 +1268,43 @@ parametric, : reciprocal condition number 0</code></pre>
 <pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
 parametric, : There are other near singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>ggsave(plot = fig_overview, filename = &quot;overview_dfe_bins_ByDelta.pdf&quot;, &quot;pdf&quot;)</code></pre>
 <pre><code>Saving 7 x 5 in image</code></pre>
 <pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
@@ -1020,6 +1407,43 @@ number 0</code></pre>
 as.matrix(model.frame(delete.response(terms(object)), : There are other near
 singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+706a03c
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-13
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
