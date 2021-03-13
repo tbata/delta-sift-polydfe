@@ -1,0 +1,294 @@
+---
+title: "Overview Fig: Properties of DFEs across Delta_SIFT classes"
+author: "Thomas B"
+date: "12/9/2020 Last update:(last update `r Sys.Date()`)"
+output:
+  html_document:
+    theme: united
+    code_folding: hide
+    toc: true
+    toc_depth: 2
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(magrittr)
+library(cowplot)
+library(knitr)
+
+```
+
+# brief overview of analysis and updates :
+
+* We read in the data made available in the lastest version of the poyDFE outputs summary by Jun Chen.
+
+* We define a covariate $\delta$ as the change in discretized SIFT scores
+
+* We filter away the cases where eps is too big
+
+Rationale for conditioning DFE on $\delta$ is to illustrate that change in SIFT scores are a powerful way to capture the expected effect of mutations and the fact that DFEs are quite different. There is a sharp divide between $\delta \leq 0$ and $\delta >0$ 
+
+# Reading the data 
+Note by TB Jan 14. 
+Original analysis is made using the output summaries stored in `Data/20201207/summary_PolyDFEOut.txt`. 
+Here I updated 
+```{r get_data}
+dfe_sift <- read.table("Data/summary_polyDFE_siftCate_new.txt",header=T)
+
+dim(dfe_sift)
+names(dfe_sift)
+dfe_sift$delta <- dfe_sift$to - dfe_sift$from
+```
+
+# Technical check: distribution of $\epsilon_{anc}$
+It looks like a few species have a really worrying estimated error `epsilon_anc` rate of SNP orientation and I think that all inference with eps> 0.2 should hardly be trusted ..
+
+```{r overall_eps}
+qplot(log10(dfe_sift$eps), bins=20) + xlab("rate of SNP polarization error (eps_anc)")+theme_minimal(base_size = 16)
+names(dfe_sift)
+dfe_sift %>%
+  filter(nsyn_counts>100) %>%
+  ggplot(aes(x= log10(nsyn_counts), 
+             y = log10(eps+0.000001),
+             weight=sqrt(1+nsyn_counts))) + 
+  geom_point(aes(color = (delta<=0)), size=0.5) + 
+  # geom_abline(intercept = log10(0.1), slope=0, color ="cornflowerblue")+
+  geom_smooth(method="loess", color= "cornflowerblue", span=0.5, se=T)+
+  ylab("rate of SNP polarization error, log10(eps)")+
+  xlab("SFS sample size, log10( non-syn. counts in SFS)")+
+  scale_color_colorblind()+
+  theme_cowplot(font_size  = 16)+
+  theme(legend.position = c(0.8,0.2))+
+  theme(legend.background  = element_rect("grey"))+
+  ggsave2(filename = "eps_vs_lognsyn_counts.pdf", device = "pdf")+
+  NULL
+ 
+```
+
+
+```{r}
+
+dfe_sift %>%
+  filter(nsyn_counts>100) %>%
+  ggplot(aes(x=delta, y = log10(eps + 0.000001), color=species, size = sqrt(nsyn_counts), weight=sqrt(1+nsyn_counts) ))+ 
+  geom_jitter(height = 0,width = 0.1)+
+  geom_smooth(method = "loess", aes(color = NULL), color = "black", span=0.75)+
+  # geom_smooth(method = "lm", aes(color = NULL), color = "black", se =T)+
+  theme_cowplot(font_size  = 13)+
+  # facet_wrap(~group)+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  xlab(expression(delta))+
+  ylab("rate of SNP polarization error, log10(eps)")+
+  scale_size("counts in n-syn SFS", range=c(1,4))+
+  ggsave2(filename = "eps_vs_delta.pdf", device = "pdf")+
+  NULL
+
+```
+
+# Filtering data before figure
+We exclude:  
+* the $\epsilon_{anc}$ > 0.1
+* the number of chromosomes in the sfs < 6 `species_low_nchr`(manually curated list below)
+
+
+```{r}
+unique(dfe_sift$species)
+species_low_nchr <- c("Qmango", "Shua", "Bnana")
+dfe_sift <- dfe_sift %>%  
+  filter(!(species %in% species_low_nchr)) %>%
+  filter(eps <0.1)  # 
+dim(dfe_sift)
+```
+
+# The Flux of beneficial mutations $p_b s_b$
+
+Detecting beneficial mutations is notoriously difficult as they are expected to be overall quite rare and therefore make a modest contribution to SFS counts. But $\delta$ is a very relevant covariate 
+Among the classes of mutations categorized as likely deleterious (negative $\delta$)  we have virtually zero flux of beneficial mutations; but as $\delta$ increases, so does the flux of beneficial mutations $p_b S_b$: 
+
+### the Flux $p_b*S_b$
+
+
+Sylvain: The same but in log-scale
+```{r}
+dfe_sift %>%
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y=pb*Sb, color=species, weight = sqrt(1+nsyn_counts))) +
+  # geom_point(aes(size = nsyn_counts))+
+  geom_jitter(height = 0,width = 0.1, aes(size = sqrt(1+nsyn_counts)))+
+  scale_y_log10() +
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula ="y~ x", se =T, aes(color = NULL), color = "black", span=0.65)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("Flux of beneficial mutation: pb*Sb")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  ggsave2(filename = "flux_benef_vsdelta.pdf", device = "pdf")+
+  NULL
+
+```
+
+
+### the mere proportion $p_b$
+
+<!-- ```{r} -->
+<!-- dfe_sift %>% -->
+<!--   filter(cat04==0) %>% -->
+<!--   ggplot(aes(x=delta, y=pb, color=group, weight = 1+nsyn_counts)) + -->
+<!--   geom_point(aes(size = nsyn_counts))+  -->
+<!--   facet_wrap(~ group) +  -->
+<!--   geom_smooth(method = "glm", formula ="y~ x", se =T)+ -->
+<!--   theme_minimal(base_size = 15)+ -->
+<!--   xlab(expression(delta))+ -->
+<!--   ylab("proportion of benf. mutations (p_b)")+ -->
+<!--   scale_color_colorblind()+ -->
+<!--   theme(legend.position = "none")+ -->
+<!--   NULL -->
+
+<!-- ``` -->
+
+
+Sylvain: The same but in log-scale
+```{r}
+dfe_sift %>%
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y=pb, color=species, weight = 1+nsyn_counts)) +
+  # geom_point(aes(size = nsyn_counts))+
+  geom_jitter(height = 0, width = 0.1, aes(size = sqrt(1+nsyn_counts)))+
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula = y ~ x, se =T, aes(color = NULL), color = "black", span=0.7 )+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("proportion of beneficial mutations")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  ggsave2(filename = "pb_versus_delta.pdf",device = "pdf")+
+  NULL
+```
+
+
+# Binning of DFE by $N_e s$ 
+
+## Poportion of mutations in Nes classes 
+
+We can see that conditioning on the $\delta$ covariates is very informative: 
+there is a strong covariation between the proportion of mutations in Ne*s classes inferred via `polyDFE` and the perceived functional categories as obtained via SIFT:
+
+```{r}
+dfe_sift %>% 
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y= D1,  weight= 1+nsyn_counts)) + 
+  geom_point(aes(size = nsyn_counts, color=species ))+ 
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula ="y~ x", se =T, span = 0.5)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("prop in Nes[0-1]")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  NULL
+
+
+dfe_sift %>% 
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y= D2,  weight= 1+nsyn_counts)) + 
+  geom_point(aes(size = nsyn_counts, color=species))+ 
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula ="y~ x", se =T, span =.5)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("prop in Nes[-1, -10]")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  NULL
+
+
+dfe_sift %>% 
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y= D3,  weight= 1+nsyn_counts)) + 
+  geom_point(aes(size = nsyn_counts, color=species))+ 
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula ="y~ x", se =T)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("prop in Nes[-10, -100]")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  NULL
+
+dfe_sift %>% 
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y= D4+D5,  weight= 1+nsyn_counts)) + 
+  geom_point(aes(size = nsyn_counts, color=species))+ 
+  # facet_wrap(~ group) + 
+  geom_smooth(method = "loess", formula ="y~ x", se =T, span =0.5)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("prop in Nes[- 100 -...]")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  NULL
+
+```
+
+
+# Overall figure combining 
+Fig Legend, each line denotes the proportion of mutations in the DFE that are beneficial (orange) or that are (increasingly) deleterious mutations :
+D1 ( Nes in 0-1) in light grey, D2 (Nes in 1-10) dark grey, D3(10-100 blue), D4+D5(Nes > 100) red. 
+
+```{r}
+ fig_overview <- dfe_sift %>% 
+  filter(cat04==0) %>%
+  ggplot(aes(weight= 1+nsyn_counts)) + 
+  # geom_point(aes(size = nsyn_counts, color=species ))+ 
+  # facet_wrap(~ group) + 
+   geom_smooth(aes(x=delta, y= D1),  method = "loess", formula ="y~ x", se =F, color="grey90", span = 0.5)+
+  geom_smooth(aes(x=delta, y= D2),  method = "loess", formula ="y~ x", se =F, color = "grey70", span = 0.5)+
+  # geom_smooth(aes(x=delta, y= D3),  method = "loess", formula ="y~ x", se =F, color = "cornflowerblue", span = 0.5)+
+  geom_smooth(aes(x=delta, y= D3 +D4+D5),  method = "loess", formula ="y~ x", se =F, color = "red", span = 0.5)+
+  geom_smooth(aes(x=delta, y= pb),  method = "loess", formula ="y~ x", se =F, color = "orange", span = 0.5)+
+  theme_minimal(base_size = 15)+
+  xlab(expression(delta))+
+  ylab("prop in Nes class")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  NULL
+plot(fig_overview)
+ggsave(plot = fig_overview, filename = "overview_dfe_bins_ByDelta.pdf", "pdf")
+
+```
+
+# PiN/PiS corrected
+
+Another representation by adding +1 to every count: $\pi_N =\frac{n_N + 1}{L_N + 1}$ and $\pi_S =\frac{n_S + 1}{L_S + 1}$ we can then directly use a log scale
+
+```{r}
+dfe_sift$PiNPiScor <- (dfe_sift$nsyn_counts+1)*(dfe_sift$Lsyn+1)/((dfe_sift$Lnsyn+1)*(dfe_sift$syn_counts+1)) 
+
+dfe_sift %>%
+  filter(cat04==0) %>%
+  ggplot(aes(x=delta, y=PiNPiScor, color=species, weight=(1+nsyn_counts)) )+ 
+  # geom_point(aes(size = nsyn_counts)) + 
+  geom_jitter(width = 0.1, aes(size = nsyn_counts)) + 
+  scale_y_log10() +
+  # facet_wrap(~ group) + 
+    geom_smooth(method = "loess", formula = y ~ x, se =T, aes(color = NULL), color = "black", span=0.5 )+
+  # geom_smooth(method = "loess", formula ="y~ x", se =T)+
+  theme_cowplot(font_size =  15)+
+  xlab("Delta SIFT score")+
+  ylab("corrected piN/piS")+
+  scale_color_viridis_d()+
+  theme(legend.position = "none")+
+  ggsave2("pin_pis_corrected_vs_delta.png", device = "png")+
+  NULL
+```
+
+
+
+
