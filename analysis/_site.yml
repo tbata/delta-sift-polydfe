@@ -5,10 +5,14 @@ navbar:
   left:
   - text: Home
     href: index.html
+  - text: Stat models
+    href: S1_Stat_models_deltaSIFT_DFEs.html
+  - text: Making figs
+    href: S2_Summary.Figure_deltaSIFT_DFEs.html
   - text: About
     href: about.html
-  - text: License
-    href: license.html
+  # - text: License
+  #   href: license.html
   right:
   - icon: fa-github
     text: Source code
