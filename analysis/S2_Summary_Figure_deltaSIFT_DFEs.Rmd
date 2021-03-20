@@ -1,5 +1,5 @@
 ---
-title: "Overview Fig: Properties of DFEs across Delta_SIFT classes"
+title: "Source for MS Figures"
 author: "Thomas B"
 date: "12/9/2020 Last update:(last update `r Sys.Date()`)"
 output:
@@ -65,7 +65,7 @@ dfe_sift %>%
   theme_cowplot(font_size  = 16)+
   theme(legend.position = c(0.8,0.2))+
   theme(legend.background  = element_rect("grey"))+
-  ggsave2(filename = "eps_vs_lognsyn_counts.pdf", device = "pdf")+
+  # ggsave2(filename = "eps_vs_lognsyn_counts.pdf", device = "pdf")+
   NULL
  
 ```
@@ -86,7 +86,7 @@ dfe_sift %>%
   xlab(expression(delta))+
   ylab("rate of SNP polarization error, log10(eps)")+
   scale_size("counts in n-syn SFS", range=c(1,4))+
-  ggsave2(filename = "eps_vs_delta.pdf", device = "pdf")+
+  # ggsave2(filename = "eps_vs_delta.pdf", device = "pdf")+
   NULL
 
 ```
@@ -129,7 +129,7 @@ dfe_sift %>%
   ylab("Flux of beneficial mutation: pb*Sb")+
   scale_color_viridis_d()+
   theme(legend.position = "none")+
-  ggsave2(filename = "flux_benef_vsdelta.pdf", device = "pdf")+
+  # ggsave2(filename = "flux_benef_vsdelta.pdf", device = "pdf")+
   NULL
 
 ```
@@ -168,7 +168,7 @@ dfe_sift %>%
   ylab("proportion of beneficial mutations")+
   scale_color_viridis_d()+
   theme(legend.position = "none")+
-  ggsave2(filename = "pb_versus_delta.pdf",device = "pdf")+
+  # ggsave2(filename = "pb_versus_delta.pdf",device = "pdf")+
   NULL
 ```
 
@@ -260,7 +260,7 @@ D1 ( Nes in 0-1) in light grey, D2 (Nes in 1-10) dark grey, D3(10-100 blue), D4+
   theme(legend.position = "none")+
   NULL
 plot(fig_overview)
-ggsave(plot = fig_overview, filename = "overview_dfe_bins_ByDelta.pdf", "pdf")
+# ggsave(plot = fig_overview, filename = "overview_dfe_bins_ByDelta.pdf", "pdf")
 
 ```
 
@@ -285,7 +285,7 @@ dfe_sift %>%
   ylab("corrected piN/piS")+
   scale_color_viridis_d()+
   theme(legend.position = "none")+
-  ggsave2("pin_pis_corrected_vs_delta.png", device = "png")+
+  # ggsave2("pin_pis_corrected_vs_delta.png", device = "png")+
   NULL
 ```
 

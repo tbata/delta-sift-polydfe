@@ -1,6 +1,6 @@
 ---
-title: "Supplementary text for GBE ms XX-YY: " 
-subtitle: "Mixed models for exploring variation of mutation properties across SIFT classes"
+title: "Supplementary text for GBE ms GBE-210319 " 
+subtitle: "Hunting for beneficial mutations"
 author: "J Chen, T. Bataillon, S Glemin, M. Lascoux"
 date: "Last update: `r Sys.Date()`"
 output:
