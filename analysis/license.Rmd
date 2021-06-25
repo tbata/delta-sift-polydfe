@@ -7,15 +7,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-What license are you using for your code? See [choosealicense.com][choose] for
-help deciding. It's a convention to save a file `LICENSE` in the root of your
-Git repo that contains the license text.
-
-What license are you using for the written content on your site? It is
-traditional to choose a [Creative Commons][cc] license for this type of content.
-
-[choose]: http://choosealicense.com/
-[cc]: https://creativecommons.org/choose/
-
-How should others cite your work? It's a convention to save a file `CITATION`
-in the root of your Git repo that contains the citation information.
+This Github repository's contains R code that was used to produce figures and statistical analysis underlying the GBE article "Hunting for beneficial mutations: conditioning on SIFT scores when estimating the Distribution of
+Fitness Effect of new mutations".
+All R code is made available as .rmd files. These can be used and reused freely. 

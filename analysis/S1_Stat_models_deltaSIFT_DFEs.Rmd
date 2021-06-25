@@ -1,19 +1,19 @@
 ---
 title: "Supplementary text for GBE ms GBE-210319 " 
-subtitle: "Hunting for beneficial mutations"
+subtitle: ""
 author: "J Chen, T. Bataillon, S Glemin, M. Lascoux"
 date: "Last update: `r Sys.Date()`"
 output:
   workflowr::wflow_html:
-    toc: yes
+  #   toc: yes
   # pdf_document:
   #   toc: yes
   #   toc_depth: '2'
   # html_document:
-  #   theme: united
-  #   code_folding: show
-  #   toc: yes
-  #   toc_depth: 2
+    theme: united
+    code_folding: show
+    toc: yes
+    toc_depth: 2
 editor_options:
   chunk_output_type: console
 ---
@@ -46,7 +46,7 @@ library(lmerTest)
 # Reading the data 
 
 ```{r data}
-dfe_sift <- read.table("Data/summary_polyDFE_siftCate_new.txt",header=T)
+dfe_sift <- read.table("data/summary_table_v3.txt",header=T)
 dim(dfe_sift)
 names(dfe_sift)
 dfe_sift$delta <- dfe_sift$to - dfe_sift$from
@@ -69,11 +69,13 @@ dfe_sift <- dfe_sift %>%
 dim(dfe_sift)
 
 dim(dfe_sift)
-(507-387)/507 #data loss
 
-dfe_sift %>% filter(cat04==0) -> df_tofit
+table(dfe_sift$category)
+# dfe_sift %>% filter(cat04==0) -> df_tofit
+dfe_sift  -> df_tofit
+
 dim(df_tofit)
-
+names(df_tofit)
 length(unique(df_tofit$species))
 
 ```
@@ -88,7 +90,7 @@ We correct by adding +1 to every count: $\pi_N =\frac{n_N + 1}{L_N + 1}$ and $\p
 df_tofit$PiNPiScor <- (df_tofit$nsyn_counts+1)*(df_tofit$Lsyn+1)/((df_tofit$Lnsyn+1)*(df_tofit$syn_counts+1)) 
 
 df_tofit %>%
-  filter(cat04==0) %>%
+  # filter(cat04==0) %>%
   ggplot(aes(x=delta, y=PiNPiScor, weight=(1+nsyn_counts)) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter(width = 0.2, aes(size = nsyn_counts)) + 
@@ -109,8 +111,8 @@ df_tofit %>%
 ## A (linear) fit for each species separately
 ```{r}
 df_tofit %>%
-  filter(cat04==0) %>%
-  ggplot(aes(x=delta, y=PiNPiScor, color=species, weight=sqrt((1+nsyn_counts))) )+ 
+  # filter(cat04==0) %>%
+  ggplot(aes(x=delta, y=PiNPiScor, weight=sqrt((1+nsyn_counts))) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter(width = 0.2, aes(size = nsyn_counts)) + 
   scale_y_log10() +
@@ -121,8 +123,7 @@ df_tofit %>%
   ylab("corrected P0/P4")+
   scale_color_viridis_d(direction = -1)+
   theme(legend.position = "none")+
-  NULL
-# ggsave("manuscript_GBE/manuscript_GBE_Jun2/figures_update_Feb2020/corrected_p0p4_delta_manyslopes.pdf",device = "pdf")
+  NULL# ggsave("manuscript_GBE/manuscript_GBE_Jun2/figures_update_Feb2020/corrected_p0p4_delta_manyslopes.pdf",device = "pdf")
 ```
 
 ## Linear (mixed) models
@@ -150,13 +151,13 @@ summary(naive)
 # plot(naive)
 
 AIC(naive)
-mixed_1 <-lmer(formula = log(PiNPiScor) ~ delta +(1|species) , 
+mixed_1 <-lmer(formula = log(PiNPiScor) ~ delta +(1|species) + GC3, 
      data = df_tofit, REML =F )
 
 merTools::modelInfo(mixed_1)
 lmerTest::ranova(mixed_1) 
 
-mixed_2 <-lmer(formula = log(PiNPiScor) ~  delta +(0 + delta |species), 
+mixed_2 <-lmer(formula = log(PiNPiScor) ~  delta +(0 + delta |species) + GC3, 
      data = df_tofit,  REML =F )
 
 AIC(mixed_2)
@@ -177,7 +178,7 @@ knitr::kable(df_table, digits = 2, col.names = c("Models for P0/P4 ratio", "AIC"
 ```
 
 ```{r}
-1 - (deviance(mixed_2) /(1011.67-1))
+1 - (deviance(mixed_2) /(1334.67))
 ```
 
 ## Tech check: influence of eps
@@ -185,7 +186,7 @@ knitr::kable(df_table, digits = 2, col.names = c("Models for P0/P4 ratio", "AIC"
 naive0 <- lm(log(PiNPiScor) ~ eps , 
             data = df_tofit)
 summary(naive0)
-naive <- lm(log(PiNPiScor) ~ eps + delta , 
+naive <- lm(log(PiNPiScor) ~ eps + delta + GC3, 
             data = df_tofit) 
 summary(naive)
 
@@ -195,13 +196,13 @@ car::vif(naive)
 # plot(naive)
 
 AIC(naive)
-mixed_1 <-lmer(formula = log(PiNPiScor) ~ eps + delta +(1|species) , 
+mixed_1 <-lmer(formula = log(PiNPiScor) ~ eps + delta +(1|species) + GC3, 
      data = df_tofit, REML =F )
 
 merTools::modelInfo(mixed_1)
 lmerTest::ranova(mixed_1) 
 
-mixed_2 <-lmer(formula = log(PiNPiScor) ~  eps + delta +(0 + delta |species), 
+mixed_2 <-lmer(formula = log(PiNPiScor) ~  eps + delta +(0 + delta |species) +GC3, 
      data = df_tofit,  REML =F )
 
 AIC(mixed_2)
@@ -233,7 +234,7 @@ table(df_tofit$benef_mut) %>% kable(col.names = c("benef_mut", "n"))
 
 ```{r}
   df_tofit %>%
-  ggplot(aes(x=delta, y=benef_mut, color=species, weight=sqrt((1+nsyn_counts))) )+ 
+  ggplot(aes(x=delta, y=benef_mut, weight=sqrt((1+nsyn_counts))) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.15, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = "glm",
@@ -261,7 +262,7 @@ naive0 <- glm(benef_mut  ~ 1 , family = "binomial",
             data = df_tofit) 
 summary(naive0)
 naive0$deviance
-naive <- glm(benef_mut  ~ delta , family = "binomial",
+naive <- glm(benef_mut  ~ delta + GC3 , family = "binomial",
             data = df_tofit) 
 summary(naive)
 anova(naive0, naive, test="Chisq")
@@ -308,15 +309,22 @@ Using the deviance of `mixed_2` and comparing it to the most naive model (glm no
 
 # tech check with eps included in the model 
 ```{r}
+naive00 <- glm(benef_mut  ~ 1 , family = "binomial",
+            data = df_tofit) 
+
 naive0 <- glm(benef_mut  ~ eps , family = "binomial",
             data = df_tofit) 
+
+# updated pseudo R2
+  1 -(deviance(naive0)/naive00$deviance)
+  
 summary(naive0)
 naive0$deviance
-naive <- glm(benef_mut  ~ eps + delta , family = "binomial",
+naive <- glm(benef_mut  ~ eps + delta + GC3, family = "binomial",
             data = df_tofit) 
 summary(naive)
 anova(naive0, naive, test="Chisq")
-
+anova(naive, test="Chisq")
 1 - (naive$deviance/naive0$deviance) # pseudo R^2 
 
 AIC(naive)
@@ -339,7 +347,7 @@ plotREsim(REsim(mixed_2)) # estimated random effects (slopes) for each sp relati
 
 car::vif(naive)
  df_tofit %>%
-  ggplot(aes(x=eps, y=benef_mut, color=species))+ 
+  ggplot(aes(x=eps, y=benef_mut))+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.0025, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = "glm",
@@ -354,7 +362,7 @@ car::vif(naive)
 car::vif(naive)
  
  df_tofit %>%
-  ggplot(aes(x=delta, y=benef_mut, color=species))+ 
+  ggplot(aes(x=delta, y=benef_mut))+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.0025, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = "glm",
@@ -368,6 +376,7 @@ car::vif(naive)
  
  # updated pseudo R2
   1 -(deviance(mixed_2)/naive0$deviance)
+  
 ```
 
 
