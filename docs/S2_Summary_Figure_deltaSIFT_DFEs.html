@@ -9,10 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Thomas B" />
+<meta name="author" content="Thomas Bataillon" />
 
 
-<title>Source for MS Figures</title>
+<title>Source for Figures</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +24,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -259,6 +260,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -389,18 +393,26 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Source for MS Figures</h1>
-<h4 class="author">Thomas B</h4>
-<h4 class="date">12/9/2020 Last update:(last update 2021-03-20)</h4>
+
+<h1 class="title toc-ignore">Source for Figures</h1>
+<h4 class="author">Thomas Bataillon</h4>
+<h4 class="date">12/9/2020 Last update:(last update 2021-06-25)</h4>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -409,7 +421,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -418,10 +430,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-20
+<strong>Last updated:</strong> 2021-06-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>delta-sift-polydfe/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -437,12 +449,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -509,29 +521,41 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree7952a07ccaea3f3a55c2e12fdb51d713daea8789targetblank7952a07a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/tbata/delta-sift-polydfe/tree/7952a07ccaea3f3a55c2e12fdb51d713daea8789" target="_blank">7952a07</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree593f3c81659d7c644f8e23f96c8e428643ca2da8targetblank593f3c8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/tbata/delta-sift-polydfe/tree/593f3c81659d7c644f8e23f96c8e428643ca2da8" target="_blank">593f3c8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree7952a07ccaea3f3a55c2e12fdb51d713daea8789targetblank7952a07a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree593f3c81659d7c644f8e23f96c8e428643ca2da8targetblank593f3c8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/tbata/delta-sift-polydfe/tree/7952a07ccaea3f3a55c2e12fdb51d713daea8789" target="_blank">7952a07</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/tbata/delta-sift-polydfe/tree/593f3c81659d7c644f8e23f96c8e428643ca2da8" target="_blank">593f3c8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/.Rhistory
+    Ignored:    analysis/figure/
+
+Untracked files:
+    Untracked:  FigsMay2021/
+    Untracked:  data/summary_table_v3.txt
+    Untracked:  eps_vs_delta.pdf
+    Untracked:  eps_vs_lognsyn_counts.pdf
+    Untracked:  flux_benef_vsdelta.pdf
+    Untracked:  pb_versus_delta.pdf
 
 Unstaged changes:
     Deleted:    analysis/S1_Stat_models_deltaDIFT_DFEs.Rmd
+    Modified:   analysis/S1_Stat_models_deltaSIFT_DFEs.Rmd
+    Modified:   analysis/S2_Summary_Figure_deltaSIFT_DFEs.Rmd
     Modified:   analysis/_site.yml
+    Modified:   analysis/license.Rmd
 
 </code></pre>
 <p>
@@ -570,6 +594,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/tbata/delta-sift-polydfe/593f3c81659d7c644f8e23f96c8e428643ca2da8/docs/S2_Summary_Figure_deltaSIFT_DFEs.html" target="_blank">593f3c8</a>
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -699,33 +740,31 @@ wflow_git_commit(files = "analysis/*.Rmd")
 <div id="brief-overview-of-analysis-and-updates" class="section level1">
 <h1>brief overview of analysis and updates :</h1>
 <ul>
-<li><p>We read in the data made available in the lastest version of the poyDFE outputs summary by Jun Chen.</p></li>
+<li><p>We read in the data made available in the lastest version of the polyDFE outputs summary by Jun Chen.</p></li>
 <li><p>We define a covariate <span class="math inline">\(\delta\)</span> as the change in discretized SIFT scores</p></li>
-<li><p>We filter away the cases where eps is too big</p></li>
+<li><p>We filter away the cases where <span class="math inline">\(\epsilon_{anc}\)</span> is too big</p></li>
 </ul>
-<p>Rationale for conditioning DFE on <span class="math inline">\(\delta\)</span> is to illustrate that change in SIFT scores are a powerful way to capture the expected effect of mutations and the fact that DFEs are quite different. There is a sharp divide between <span class="math inline">\(\delta \leq 0\)</span> and <span class="math inline">\(\delta &gt;0\)</span></p>
+<p>Rationale for conditioning DFE on <span class="math inline">\(\delta\)</span> is to illustrate that change in SIFT scores are a powerful way to capture the expected effect of mutations and the fact that DFEs are quite different and there is a consistent change in the DFEs and this change is well captured by although there is not a neat/sharp divide between <span class="math inline">\(\delta \leq 0\)</span> and <span class="math inline">\(\delta &gt;0\)</span></p>
 </div>
 <div id="reading-the-data" class="section level1">
 <h1>Reading the data</h1>
-<p>Note by TB Jan 14. Original analysis is made using the output summaries stored in <code>Data/20201207/summary_PolyDFEOut.txt</code>. Here I updated</p>
-<pre class="r"><code>dfe_sift &lt;- read.table(&quot;Data/summary_polyDFE_siftCate_new.txt&quot;,header=T)
+<pre class="r"><code>dfe_sift &lt;- read.table(&quot;data/summary_table_v3.txt&quot;,header=T)
 
 dim(dfe_sift)</code></pre>
-<pre><code>[1] 507  26</code></pre>
+<pre><code>[1] 322  28</code></pre>
 <pre class="r"><code>names(dfe_sift)</code></pre>
-<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;cat04&quot;       &quot;from&quot;       
- [6] &quot;to&quot;          &quot;mutation&quot;    &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
-[11] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;PiS&quot;        
-[16] &quot;PiN&quot;         &quot;PiNPiS&quot;      &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;       
-[21] &quot;Lnsyn&quot;       &quot;D1&quot;          &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         
-[26] &quot;D5&quot;         </code></pre>
+<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;fold&quot;        &quot;from&quot;       
+ [6] &quot;to&quot;          &quot;delta&quot;       &quot;PiS&quot;         &quot;PiN&quot;         &quot;PiNPiS&quot;     
+[11] &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;        &quot;Lnsyn&quot;       &quot;TD4&quot;        
+[16] &quot;TD0&quot;         &quot;GC3&quot;         &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
+[21] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;D1&quot;         
+[26] &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         </code></pre>
 <pre class="r"><code>dfe_sift$delta &lt;- dfe_sift$to - dfe_sift$from</code></pre>
 </div>
 <div id="technical-check-distribution-of-epsilon_anc" class="section level1">
 <h1>Technical check: distribution of <span class="math inline">\(\epsilon_{anc}\)</span></h1>
-<p>It looks like a few species have a really worrying estimated error <code>epsilon_anc</code> rate of SNP orientation and I think that all inference with eps&gt; 0.2 should hardly be trusted ..</p>
+<p>A few species have a high estimated error <code>epsilon_anc</code> rate of SNP orientation and I think that all inference with eps&gt; 0.2 should hardly be trusted , so these are filtered out.</p>
 <pre class="r"><code>qplot(log10(dfe_sift$eps), bins=20) + xlab(&quot;rate of SNP polarization error (eps_anc)&quot;)+theme_minimal(base_size = 16)</code></pre>
-<pre><code>Warning: Removed 6 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/overall_eps-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overall_eps-1">
@@ -765,29 +804,30 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>names(dfe_sift)</code></pre>
-<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;cat04&quot;       &quot;from&quot;       
- [6] &quot;to&quot;          &quot;mutation&quot;    &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
-[11] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;PiS&quot;        
-[16] &quot;PiN&quot;         &quot;PiNPiS&quot;      &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;       
-[21] &quot;Lnsyn&quot;       &quot;D1&quot;          &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         
-[26] &quot;D5&quot;          &quot;delta&quot;      </code></pre>
+<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;fold&quot;        &quot;from&quot;       
+ [6] &quot;to&quot;          &quot;delta&quot;       &quot;PiS&quot;         &quot;PiN&quot;         &quot;PiNPiS&quot;     
+[11] &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;        &quot;Lnsyn&quot;       &quot;TD4&quot;        
+[16] &quot;TD0&quot;         &quot;GC3&quot;         &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
+[21] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;D1&quot;         
+[26] &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         </code></pre>
 <pre class="r"><code>dfe_sift %&gt;%
   filter(nsyn_counts&gt;100) %&gt;%
   ggplot(aes(x= log10(nsyn_counts), 
              y = log10(eps+0.000001),
              weight=sqrt(1+nsyn_counts))) + 
-  geom_point(aes(color = (delta&lt;=0)), size=0.5) + 
-  # geom_abline(intercept = log10(0.1), slope=0, color =&quot;cornflowerblue&quot;)+
-  geom_smooth(method=&quot;loess&quot;, color= &quot;cornflowerblue&quot;, span=0.5, se=T)+
-  ylab(&quot;rate of SNP polarization error, log10(eps)&quot;)+
+  geom_point(aes(color = delta&lt;0), size=0.6) + 
+  ylab(&quot;SNP polarization error, log10(eps)&quot;)+
+  geom_smooth(method=&quot;loess&quot;, color= &quot;cornflowerblue&quot;, span=0.75, se=T)+
   xlab(&quot;SFS sample size, log10( non-syn. counts in SFS)&quot;)+
   scale_color_colorblind()+
-  theme_cowplot(font_size  = 16)+
-  theme(legend.position = c(0.8,0.2))+
-  theme(legend.background  = element_rect(&quot;grey&quot;))+
-  # ggsave2(filename = &quot;eps_vs_lognsyn_counts.pdf&quot;, device = &quot;pdf&quot;)+
+  theme_cowplot(font_size  = 17)+
+  theme(legend.position = c(0.7,0.9))+
+  theme(legend.background  = element_rect(&quot;white&quot;))+
+  ggsave2(filename = &quot;eps_vs_lognsyn_counts.pdf&quot;, device = &quot;pdf&quot;)+
   NULL</code></pre>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>Saving 7 x 5 in image</code></pre>
+<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
+`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/overall_eps-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overall_eps-2">
@@ -828,20 +868,22 @@ Thomas Bataillon
 </div>
 <pre class="r"><code>dfe_sift %&gt;%
   filter(nsyn_counts&gt;100) %&gt;%
-  ggplot(aes(x=delta, y = log10(eps + 0.000001), color=species, size = sqrt(nsyn_counts), weight=sqrt(1+nsyn_counts) ))+ 
-  geom_jitter(height = 0,width = 0.1)+
-  geom_smooth(method = &quot;loess&quot;, aes(color = NULL), color = &quot;black&quot;, span=0.75)+
+  ggplot(aes(x=delta, y = log10(eps + 0.000001), size = sqrt(nsyn_counts), weight=sqrt(1+nsyn_counts) ))+ 
+  geom_jitter(height = 0,width = 0.2, color=&quot;grey80&quot;)+
+  geom_smooth(method = &quot;loess&quot;, aes(color = NULL), color = &quot;black&quot;)+
   # geom_smooth(method = &quot;lm&quot;, aes(color = NULL), color = &quot;black&quot;, se =T)+
-  theme_cowplot(font_size  = 13)+
+  geom_abline(intercept = log10(0.1), slope=0, color =&quot;red&quot;)+
+  theme_cowplot(font_size  = 17)+
   # facet_wrap(~group)+
-  scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
   xlab(expression(delta))+
-  ylab(&quot;rate of SNP polarization error, log10(eps)&quot;)+
+  ylab(&quot;SNP polarization error, log10(eps)&quot;)+
   scale_size(&quot;counts in n-syn SFS&quot;, range=c(1,4))+
-  # ggsave2(filename = &quot;eps_vs_delta.pdf&quot;, device = &quot;pdf&quot;)+
+  ggsave2(filename = &quot;eps_vs_delta.pdf&quot;, device = &quot;pdf&quot;)+
   NULL</code></pre>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>Saving 7 x 5 in image</code></pre>
+<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
+`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
@@ -886,17 +928,15 @@ Thomas Bataillon
 <p>We exclude:<br />
 * the <span class="math inline">\(\epsilon_{anc}\)</span> &gt; 0.1 * the number of chromosomes in the sfs &lt; 6 <code>species_low_nchr</code>(manually curated list below)</p>
 <pre class="r"><code>unique(dfe_sift$species)</code></pre>
-<pre><code> [1] &quot;Ayon&quot;     &quot;Alyr&quot;     &quot;Atha&quot;     &quot;Bnana&quot;    &quot;Bpend&quot;    &quot;Cgrand&quot;  
- [7] &quot;Cjap&quot;     &quot;Cmag&quot;     &quot;Crubel&quot;   &quot;Gprzew&quot;   &quot;Dsin&quot;     &quot;Lform&quot;   
-[13] &quot;Zmays&quot;    &quot;Peuph&quot;    &quot;Pilcif&quot;   &quot;Pnigra&quot;   &quot;Pruni&quot;    &quot;Ptrich&quot;  
-[19] &quot;Qacut&quot;    &quot;Qdent&quot;    &quot;Lacaly&quot;   &quot;Qmango&quot;   &quot;Qvaria&quot;   &quot;Sbicolor&quot;
-[25] &quot;Shab&quot;     &quot;Shua&quot;     &quot;Ddyer&quot;   </code></pre>
+<pre><code> [1] &quot;Qa&quot;     &quot;Qv&quot;     &quot;Qd&quot;     &quot;Ayan&quot;   &quot;Cjapon&quot; &quot;Did&quot;    &quot;Dis&quot;    &quot;Laca&quot;  
+ [9] &quot;Lfor&quot;   &quot;Peu&quot;    &quot;Pil&quot;    &quot;Pru&quot;    &quot;Pnig&quot;   &quot;Ptrich&quot; &quot;Bpend&quot;  &quot;Aly&quot;   
+[17] &quot;Atha&quot;   &quot;Sbic&quot;   &quot;Cgr&quot;    &quot;Crub&quot;   &quot;Shab&quot;   &quot;Zmay&quot;  </code></pre>
 <pre class="r"><code>species_low_nchr &lt;- c(&quot;Qmango&quot;, &quot;Shua&quot;, &quot;Bnana&quot;)
 dfe_sift &lt;- dfe_sift %&gt;%  
   filter(!(species %in% species_low_nchr)) %&gt;%
   filter(eps &lt;0.1)  # 
 dim(dfe_sift)</code></pre>
-<pre><code>[1] 387  27</code></pre>
+<pre><code>[1] 322  28</code></pre>
 </div>
 <div id="the-flux-of-beneficial-mutations-p_b-s_b" class="section level1">
 <h1>The Flux of beneficial mutations <span class="math inline">\(p_b s_b\)</span></h1>
@@ -905,20 +945,20 @@ dim(dfe_sift)</code></pre>
 <h3>the Flux <span class="math inline">\(p_b*S_b\)</span></h3>
 <p>Sylvain: The same but in log-scale</p>
 <pre class="r"><code>dfe_sift %&gt;%
-  filter(cat04==0) %&gt;%
-  ggplot(aes(x=delta, y=pb*Sb, color=species, weight = sqrt(1+nsyn_counts))) +
+  ggplot(aes(x=delta, y=pb*Sb, weight = sqrt(1+nsyn_counts))) +
   # geom_point(aes(size = nsyn_counts))+
-  geom_jitter(height = 0,width = 0.1, aes(size = sqrt(1+nsyn_counts)))+
+  geom_jitter(height = 0, width = 0.1, aes(size = sqrt(1+nsyn_counts)), color=&quot;grey40&quot;)+
   scale_y_log10() +
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T, aes(color = NULL), color = &quot;black&quot;, span=0.65)+
+  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T, aes(color = NULL), color = &quot;black&quot;)+
   theme_minimal(base_size = 15)+
   xlab(expression(delta))+
   ylab(&quot;Flux of beneficial mutation: pb*Sb&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
-  # ggsave2(filename = &quot;flux_benef_vsdelta.pdf&quot;, device = &quot;pdf&quot;)+
+  ggsave2(filename = &quot;flux_benef_vsdelta.pdf&quot;, device = &quot;pdf&quot;)+
   NULL</code></pre>
+<pre><code>Saving 7 x 5 in image</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
@@ -960,35 +1000,22 @@ Thomas Bataillon
 </div>
 <div id="the-mere-proportion-p_b" class="section level3">
 <h3>the mere proportion <span class="math inline">\(p_b\)</span></h3>
-<!-- ```{r} -->
-<!-- dfe_sift %>% -->
-<!--   filter(cat04==0) %>% -->
-<!--   ggplot(aes(x=delta, y=pb, color=group, weight = 1+nsyn_counts)) + -->
-<!--   geom_point(aes(size = nsyn_counts))+  -->
-<!--   facet_wrap(~ group) +  -->
-<!--   geom_smooth(method = "glm", formula ="y~ x", se =T)+ -->
-<!--   theme_minimal(base_size = 15)+ -->
-<!--   xlab(expression(delta))+ -->
-<!--   ylab("proportion of benf. mutations (p_b)")+ -->
-<!--   scale_color_colorblind()+ -->
-<!--   theme(legend.position = "none")+ -->
-<!--   NULL -->
-<!-- ``` -->
+<p>Nb We dot not add a “trend fitting curve” as these get often into negative value which makes the figure confusing.</p>
 <p>Sylvain: The same but in log-scale</p>
 <pre class="r"><code>dfe_sift %&gt;%
-  filter(cat04==0) %&gt;%
-  ggplot(aes(x=delta, y=pb, color=species, weight = 1+nsyn_counts)) +
+  ggplot(aes(x=delta, y=pb,  weight = 1+nsyn_counts)) +
   # geom_point(aes(size = nsyn_counts))+
   geom_jitter(height = 0, width = 0.1, aes(size = sqrt(1+nsyn_counts)))+
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula = y ~ x, se =T, aes(color = NULL), color = &quot;black&quot;, span=0.7 )+
+  geom_smooth(method = &quot;glm&quot;, formula = y ~ x, se =T, aes(color = NULL), color = &quot;black&quot;, method.args=list(family=&quot;binomial&quot;) )+
   theme_minimal(base_size = 15)+
   xlab(expression(delta))+
   ylab(&quot;proportion of beneficial mutations&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
-  # ggsave2(filename = &quot;pb_versus_delta.pdf&quot;,device = &quot;pdf&quot;)+
+  ggsave2(filename = &quot;pb_versus_delta.pdf&quot;,device = &quot;pdf&quot;)+
   NULL</code></pre>
+<pre><code>Saving 7 x 5 in image</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
@@ -1035,39 +1062,17 @@ Thomas Bataillon
 <h2>Poportion of mutations in Nes classes</h2>
 <p>We can see that conditioning on the <span class="math inline">\(\delta\)</span> covariates is very informative: there is a strong covariation between the proportion of mutations in Ne*s classes inferred via <code>polyDFE</code> and the perceived functional categories as obtained via SIFT:</p>
 <pre class="r"><code>dfe_sift %&gt;% 
-  filter(cat04==0) %&gt;%
+  # filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D1,  weight= 1+nsyn_counts)) + 
-  geom_point(aes(size = nsyn_counts, color=species ))+ 
+  geom_point(aes(size = nsyn_counts ))+ 
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T, span = 0.5)+
-  theme_minimal(base_size = 15)+
+  # geom_smooth(method = &quot;glm&quot;, formula =&quot;y~ x&quot;, se =T,  color=&quot;black&quot;, method.args=list(family=&quot;binomial&quot;) )+
+  theme_minimal(base_size = 17)+
   xlab(expression(delta))+
   ylab(&quot;prop in Nes[0-1]&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
   NULL</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-number 0</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : There are other near
-singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
@@ -1107,39 +1112,17 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>dfe_sift %&gt;% 
-  filter(cat04==0) %&gt;%
+  # filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D2,  weight= 1+nsyn_counts)) + 
-  geom_point(aes(size = nsyn_counts, color=species))+ 
+  geom_point(aes(size = nsyn_counts))+ 
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T, span =.5)+
-  theme_minimal(base_size = 15)+
+  geom_smooth(method = &quot;glm&quot;, formula =&quot;y~ x&quot;, se =T, color=&quot;black&quot;)+
+  theme_minimal(base_size = 17)+
   xlab(expression(delta))+
   ylab(&quot;prop in Nes[-1, -10]&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
   NULL</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-number 0</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : There are other near
-singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-2">
@@ -1179,12 +1162,12 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>dfe_sift %&gt;% 
-  filter(cat04==0) %&gt;%
+  # filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y= D3,  weight= 1+nsyn_counts)) + 
-  geom_point(aes(size = nsyn_counts, color=species))+ 
+  geom_point(aes(size = nsyn_counts))+ 
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T)+
-  theme_minimal(base_size = 15)+
+  geom_smooth(method = &quot;glm&quot;, formula =&quot;y~ x&quot;, se =T)+
+  theme_minimal(base_size = 17)+
   xlab(expression(delta))+
   ylab(&quot;prop in Nes[-10, -100]&quot;)+
   scale_color_viridis_d()+
@@ -1229,39 +1212,17 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>dfe_sift %&gt;% 
-  filter(cat04==0) %&gt;%
-  ggplot(aes(x=delta, y= D4+D5,  weight= 1+nsyn_counts)) + 
-  geom_point(aes(size = nsyn_counts, color=species))+ 
+  # filter(cat04==0) %&gt;%
+  ggplot(aes(x=delta, y= D4,  weight= 1+nsyn_counts)) + 
+  geom_point(aes(size = nsyn_counts))+ 
   # facet_wrap(~ group) + 
-  geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T, span =0.5)+
+  # geom_smooth(method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =T)+
   theme_minimal(base_size = 15)+
   xlab(expression(delta))+
   ylab(&quot;prop in Nes[- 100 -...]&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
   NULL</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-number 0</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : There are other near
-singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-5-4.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-4">
@@ -1306,54 +1267,22 @@ Thomas Bataillon
 <h1>Overall figure combining</h1>
 <p>Fig Legend, each line denotes the proportion of mutations in the DFE that are beneficial (orange) or that are (increasingly) deleterious mutations : D1 ( Nes in 0-1) in light grey, D2 (Nes in 1-10) dark grey, D3(10-100 blue), D4+D5(Nes &gt; 100) red.</p>
 <pre class="r"><code> fig_overview &lt;- dfe_sift %&gt;% 
-  filter(cat04==0) %&gt;%
+  # filter(cat04==0) %&gt;%
   ggplot(aes(weight= 1+nsyn_counts)) + 
   # geom_point(aes(size = nsyn_counts, color=species ))+ 
   # facet_wrap(~ group) + 
-   geom_smooth(aes(x=delta, y= D1),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color=&quot;grey90&quot;, span = 0.5)+
+   geom_smooth(aes(x=delta, y= D1),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color=&quot;grey90&quot;, span =0.5)+
   geom_smooth(aes(x=delta, y= D2),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;grey70&quot;, span = 0.5)+
   # geom_smooth(aes(x=delta, y= D3),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;cornflowerblue&quot;, span = 0.5)+
-  geom_smooth(aes(x=delta, y= D3 +D4+D5),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;red&quot;, span = 0.5)+
-  geom_smooth(aes(x=delta, y= pb),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;orange&quot;, span = 0.5)+
-  theme_minimal(base_size = 15)+
+  geom_smooth(aes(x=delta, y= D3 +D4),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;red&quot;, span=0.5)+
+  geom_smooth(aes(x=delta, y= pb),  method = &quot;loess&quot;, formula =&quot;y~ x&quot;, se =F, color = &quot;orange&quot;, span=0.5)+
+  theme_cowplot(font_size = 17)+
   xlab(expression(delta))+
-  ylab(&quot;prop in Nes class&quot;)+
+  ylab(&quot;proportion per in Nes class&quot;)+
   scale_color_viridis_d()+
   theme(legend.position = &quot;none&quot;)+
   NULL
 plot(fig_overview)</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
@@ -1392,7 +1321,8 @@ Thomas Bataillon
 </table>
 </div>
 </div>
-<pre class="r"><code># ggsave(plot = fig_overview, filename = &quot;overview_dfe_bins_ByDelta.pdf&quot;, &quot;pdf&quot;)</code></pre>
+<pre class="r"><code>ggsave(plot = fig_overview, filename = &quot;overview_dfe_bins_ByDelta.pdf&quot;, &quot;pdf&quot;)</code></pre>
+<pre><code>Saving 7 x 5 in image</code></pre>
 </div>
 <div id="pinpis-corrected" class="section level1">
 <h1>PiN/PiS corrected</h1>
@@ -1400,8 +1330,8 @@ Thomas Bataillon
 <pre class="r"><code>dfe_sift$PiNPiScor &lt;- (dfe_sift$nsyn_counts+1)*(dfe_sift$Lsyn+1)/((dfe_sift$Lnsyn+1)*(dfe_sift$syn_counts+1)) 
 
 dfe_sift %&gt;%
-  filter(cat04==0) %&gt;%
-  ggplot(aes(x=delta, y=PiNPiScor, color=species, weight=(1+nsyn_counts)) )+ 
+  # filter(cat04==0) %&gt;%
+  ggplot(aes(x=delta, y=PiNPiScor, weight=(1+nsyn_counts)) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter(width = 0.1, aes(size = nsyn_counts)) + 
   scale_y_log10() +
@@ -1415,28 +1345,6 @@ dfe_sift %&gt;%
   theme(legend.position = &quot;none&quot;)+
   # ggsave2(&quot;pin_pis_corrected_vs_delta.png&quot;, device = &quot;png&quot;)+
   NULL</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : neighborhood radius 1</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : reciprocal condition number 0</code></pre>
-<pre><code>Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-parametric, : There are other near singularities as well. 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at -1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius 1</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-number 0</code></pre>
-<pre><code>Warning in predLoess(object$y, object$x, newx = if
-(is.null(newdata)) object$x else if (is.data.frame(newdata))
-as.matrix(model.frame(delete.response(terms(object)), : There are other near
-singularities as well. 1</code></pre>
 <p><img src="figure/S2_Summary_Figure_deltaSIFT_DFEs.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
@@ -1498,22 +1406,22 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] knitr_1.30      cowplot_1.1.0   magrittr_1.5    dplyr_1.0.2    
-[5] ggthemes_4.2.0  ggplot2_3.3.2   workflowr_1.6.2
+[1] knitr_1.29     cowplot_1.1.0  magrittr_1.5   dplyr_1.0.2    ggthemes_4.2.0
+[6] ggplot2_3.3.2 
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5        pillar_1.4.6      compiler_4.0.2    later_1.1.0.1    
- [5] git2r_0.27.1      tools_4.0.2       digest_0.6.25     viridisLite_0.3.0
- [9] lattice_0.20-41   nlme_3.1-148      evaluate_0.14     lifecycle_0.2.0  
-[13] tibble_3.0.3      gtable_0.3.0      mgcv_1.8-31       pkgconfig_2.0.3  
-[17] rlang_0.4.7       Matrix_1.2-18     rstudioapi_0.11   yaml_2.2.1       
-[21] xfun_0.19         withr_2.2.0       stringr_1.4.0     generics_0.0.2   
-[25] fs_1.5.0          vctrs_0.3.2       tidyselect_1.1.0  rprojroot_1.3-2  
-[29] grid_4.0.2        glue_1.4.1        R6_2.4.1          rmarkdown_2.3    
-[33] farver_2.0.3      purrr_0.3.4       whisker_0.4       splines_4.0.2    
-[37] backports_1.1.8   scales_1.1.1      promises_1.1.1    ellipsis_0.3.1   
-[41] htmltools_0.5.0   colorspace_1.4-1  httpuv_1.5.4      labeling_0.3     
-[45] stringi_1.4.6     munsell_0.5.0     crayon_1.3.4     </code></pre>
+ [1] Rcpp_1.0.5       pillar_1.4.6     compiler_4.0.2   later_1.1.0.1   
+ [5] git2r_0.27.1     workflowr_1.6.2  tools_4.0.2      digest_0.6.25   
+ [9] lattice_0.20-41  nlme_3.1-148     evaluate_0.14    lifecycle_0.2.0 
+[13] tibble_3.0.3     gtable_0.3.0     mgcv_1.8-31      pkgconfig_2.0.3 
+[17] rlang_0.4.7      Matrix_1.2-18    rstudioapi_0.11  yaml_2.2.1      
+[21] xfun_0.16        withr_2.2.0      stringr_1.4.0    generics_0.0.2  
+[25] fs_1.5.0         vctrs_0.3.2      rprojroot_2.0.2  grid_4.0.2      
+[29] tidyselect_1.1.0 glue_1.4.1       R6_2.4.1         rmarkdown_2.3   
+[33] farver_2.0.3     purrr_0.3.4      whisker_0.4      splines_4.0.2   
+[37] scales_1.1.1     promises_1.1.1   ellipsis_0.3.1   htmltools_0.5.0 
+[41] colorspace_1.4-1 httpuv_1.5.4     labeling_0.3     stringi_1.4.6   
+[45] munsell_0.5.0    crayon_1.3.4    </code></pre>
 </div>
 </div>
 
@@ -1564,6 +1472,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
@@ -1575,7 +1488,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {

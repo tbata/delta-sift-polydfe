@@ -24,6 +24,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -259,6 +260,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -389,19 +393,26 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Supplementary text for GBE ms GBE-210319</h1>
-<h3 class="subtitle">Hunting for beneficial mutations</h3>
 <h4 class="author">J Chen, T. Bataillon, S Glemin, M. Lascoux</h4>
-<h4 class="date">Last update: 2021-03-20</h4>
+<h4 class="date">Last update: 2021-06-25</h4>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -410,7 +421,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -419,10 +430,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-20
+<strong>Last updated:</strong> 2021-06-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>delta-sift-polydfe/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -438,12 +449,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -510,28 +521,34 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree7952a07ccaea3f3a55c2e12fdb51d713daea8789targetblank7952a07a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/tbata/delta-sift-polydfe/tree/7952a07ccaea3f3a55c2e12fdb51d713daea8789" target="_blank">7952a07</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree593f3c81659d7c644f8e23f96c8e428643ca2da8targetblank593f3c8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/tbata/delta-sift-polydfe/tree/593f3c81659d7c644f8e23f96c8e428643ca2da8" target="_blank">593f3c8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree7952a07ccaea3f3a55c2e12fdb51d713daea8789targetblank7952a07a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomtbatadeltasiftpolydfetree593f3c81659d7c644f8e23f96c8e428643ca2da8targetblank593f3c8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/tbata/delta-sift-polydfe/tree/7952a07ccaea3f3a55c2e12fdb51d713daea8789" target="_blank">7952a07</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/tbata/delta-sift-polydfe/tree/593f3c81659d7c644f8e23f96c8e428643ca2da8" target="_blank">593f3c8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/.Rhistory
+
+Untracked files:
+    Untracked:  FigsMay2021/
+    Untracked:  data/summary_table_v3.txt
 
 Unstaged changes:
     Deleted:    analysis/S1_Stat_models_deltaDIFT_DFEs.Rmd
+    Modified:   analysis/S1_Stat_models_deltaSIFT_DFEs.Rmd
+    Modified:   analysis/S2_Summary_Figure_deltaSIFT_DFEs.Rmd
     Modified:   analysis/_site.yml
 
 </code></pre>
@@ -571,6 +588,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/tbata/delta-sift-polydfe/593f3c81659d7c644f8e23f96c8e428643ca2da8/docs/S1_Stat_models_deltaSIFT_DFEs.html" target="_blank">593f3c8</a>
+</td>
+<td>
+Thomas Bataillon
+</td>
+<td>
+2021-03-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -712,16 +746,16 @@ Publish the initial files for myproject
 </div>
 <div id="reading-the-data" class="section level1">
 <h1>Reading the data</h1>
-<pre class="r"><code>dfe_sift &lt;- read.table(&quot;Data/summary_polyDFE_siftCate_new.txt&quot;,header=T)
+<pre class="r"><code>dfe_sift &lt;- read.table(&quot;data/summary_table_v3.txt&quot;,header=T)
 dim(dfe_sift)</code></pre>
-<pre><code>[1] 507  26</code></pre>
+<pre><code>[1] 322  28</code></pre>
 <pre class="r"><code>names(dfe_sift)</code></pre>
-<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;cat04&quot;       &quot;from&quot;       
- [6] &quot;to&quot;          &quot;mutation&quot;    &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
-[11] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;PiS&quot;        
-[16] &quot;PiN&quot;         &quot;PiNPiS&quot;      &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;       
-[21] &quot;Lnsyn&quot;       &quot;D1&quot;          &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         
-[26] &quot;D5&quot;         </code></pre>
+<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;fold&quot;        &quot;from&quot;       
+ [6] &quot;to&quot;          &quot;delta&quot;       &quot;PiS&quot;         &quot;PiN&quot;         &quot;PiNPiS&quot;     
+[11] &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;        &quot;Lnsyn&quot;       &quot;TD4&quot;        
+[16] &quot;TD0&quot;         &quot;GC3&quot;         &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
+[21] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;D1&quot;         
+[26] &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         </code></pre>
 <pre class="r"><code>dfe_sift$delta &lt;- dfe_sift$to - dfe_sift$from
 head( dfe_sift) %&gt;% kable(digits = 2)</code></pre>
 <table>
@@ -729,47 +763,41 @@ head( dfe_sift) %&gt;% kable(digits = 2)</code></pre>
 <col width="4%" />
 <col width="3%" />
 <col width="7%" />
-<col width="3%" />
+<col width="2%" />
 <col width="2%" />
 <col width="1%" />
-<col width="5%" />
-<col width="5%" />
-<col width="2%" />
-<col width="5%" />
-<col width="2%" />
-<col width="2%" />
-<col width="3%" />
 <col width="3%" />
 <col width="2%" />
 <col width="2%" />
 <col width="3%" />
 <col width="6%" />
 <col width="6%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="2%" />
 <col width="4%" />
+<col width="2%" />
+<col width="4%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
 <col width="3%" />
 <col width="2%" />
 <col width="2%" />
 <col width="2%" />
 <col width="2%" />
-<col width="2%" />
-<col width="3%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left">species</th>
 <th align="left">group</th>
 <th align="left">category</th>
-<th align="right">cat04</th>
+<th align="right">fold</th>
 <th align="right">from</th>
 <th align="right">to</th>
-<th align="left">mutation</th>
-<th align="right">gradient</th>
-<th align="right">eps</th>
-<th align="right">Sd</th>
-<th align="right">beta</th>
-<th align="right">pb</th>
-<th align="right">Sb</th>
-<th align="right">alpha</th>
+<th align="right">delta</th>
 <th align="right">PiS</th>
 <th align="right">PiN</th>
 <th align="right">PiNPiS</th>
@@ -777,188 +805,202 @@ head( dfe_sift) %&gt;% kable(digits = 2)</code></pre>
 <th align="right">nsyn_counts</th>
 <th align="right">Lsyn</th>
 <th align="right">Lnsyn</th>
+<th align="right">TD4</th>
+<th align="right">TD0</th>
+<th align="right">GC3</th>
+<th align="right">gradient</th>
+<th align="right">eps</th>
+<th align="right">Sd</th>
+<th align="right">beta</th>
+<th align="right">pb</th>
+<th align="right">Sb</th>
+<th align="right">alpha</th>
 <th align="right">D1</th>
 <th align="right">D2</th>
 <th align="right">D3</th>
 <th align="right">D4</th>
-<th align="right">D5</th>
-<th align="right">delta</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:DEL-DEL</td>
 <td align="right">0</td>
 <td align="right">-2</td>
 <td align="right">-2</td>
-<td align="left">sdelet</td>
-<td align="right">0.00</td>
-<td align="right">0.32</td>
-<td align="right">-2282.42</td>
-<td align="right">1.91</td>
-<td align="right">0.43</td>
-<td align="right">16.08</td>
-<td align="right">1.00</td>
+<td align="right">0</td>
+<td align="right">0.01</td>
+<td align="right">0.01</td>
+<td align="right">0.51</td>
+<td align="right">13643</td>
+<td align="right">1468</td>
+<td align="right">251324</td>
+<td align="right">54855</td>
+<td align="right">-0.70</td>
+<td align="right">-0.58</td>
+<td align="right">0.46</td>
 <td align="right">0</td>
 <td align="right">0.00</td>
-<td align="right">0.75</td>
-<td align="right">14155</td>
-<td align="right">129</td>
-<td align="right">3659915</td>
-<td align="right">46187</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.05</td>
-<td align="right">0.52</td>
-<td align="right">0</td>
+<td align="right">-1117.94</td>
+<td align="right">0.65</td>
+<td align="right">0.38</td>
+<td align="right">2.74</td>
+<td align="right">0.99</td>
+<td align="right">0.01</td>
+<td align="right">0.02</td>
+<td align="right">0.11</td>
+<td align="right">0.48</td>
 </tr>
 <tr class="even">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:DEL-EXDEL</td>
 <td align="right">0</td>
 <td align="right">-2</td>
 <td align="right">-3</td>
-<td align="left">delet</td>
+<td align="right">-1</td>
+<td align="right">0.01</td>
 <td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">-7.12</td>
-<td align="right">2.33</td>
-<td align="right">0.00</td>
-<td align="right">0.23</td>
-<td align="right">0.00</td>
+<td align="right">0.18</td>
+<td align="right">12147</td>
+<td align="right">1331</td>
+<td align="right">217252</td>
+<td align="right">116333</td>
+<td align="right">-0.72</td>
+<td align="right">-1.18</td>
+<td align="right">0.46</td>
 <td align="right">0</td>
 <td align="right">0.00</td>
-<td align="right">0.29</td>
-<td align="right">14155</td>
-<td align="right">86</td>
-<td align="right">3659915</td>
-<td align="right">74160</td>
+<td align="right">-3290.26</td>
+<td align="right">0.24</td>
 <td align="right">0.00</td>
-<td align="right">0.31</td>
-<td align="right">0.69</td>
+<td align="right">0.15</td>
 <td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">-1</td>
+<td align="right">0.16</td>
+<td align="right">0.12</td>
+<td align="right">0.20</td>
+<td align="right">0.52</td>
 </tr>
 <tr class="odd">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:DEL-STABLE</td>
 <td align="right">0</td>
 <td align="right">-2</td>
 <td align="right">0</td>
-<td align="left">benefit</td>
-<td align="right">0.21</td>
-<td align="right">0.24</td>
-<td align="right">-0.65</td>
-<td align="right">0.01</td>
-<td align="right">0.50</td>
-<td align="right">95.49</td>
-<td align="right">0.99</td>
-<td align="right">0</td>
-<td align="right">0.01</td>
-<td align="right">10.12</td>
-<td align="right">14155</td>
-<td align="right">706</td>
-<td align="right">3659915</td>
-<td align="right">20133</td>
-<td align="right">0.50</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
 <td align="right">2</td>
+<td align="right">0.01</td>
+<td align="right">0.05</td>
+<td align="right">4.31</td>
+<td align="right">33381</td>
+<td align="right">4811</td>
+<td align="right">649224</td>
+<td align="right">28635</td>
+<td align="right">-0.69</td>
+<td align="right">0.44</td>
+<td align="right">0.46</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">0.01</td>
+<td align="right">0.99</td>
+<td align="right">50.00</td>
+<td align="right">1.00</td>
+<td align="right">0.01</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="even">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:DEL-TOL</td>
 <td align="right">0</td>
 <td align="right">-2</td>
 <td align="right">-1</td>
-<td align="left">benefit</td>
+<td align="right">1</td>
+<td align="right">0.01</td>
+<td align="right">0.02</td>
+<td align="right">1.47</td>
+<td align="right">16856</td>
+<td align="right">1878</td>
+<td align="right">308853</td>
+<td align="right">28779</td>
+<td align="right">-0.67</td>
+<td align="right">0.13</td>
+<td align="right">0.46</td>
+<td align="right">0</td>
+<td align="right">0.02</td>
+<td align="right">-4909.01</td>
+<td align="right">4.56</td>
+<td align="right">0.79</td>
+<td align="right">49.99</td>
+<td align="right">1.00</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
 <td align="right">0.00</td>
 <td align="right">0.21</td>
-<td align="right">-8.37</td>
-<td align="right">0.01</td>
-<td align="right">0.50</td>
-<td align="right">97.07</td>
-<td align="right">0.99</td>
-<td align="right">0</td>
-<td align="right">0.00</td>
-<td align="right">2.46</td>
-<td align="right">14155</td>
-<td align="right">210</td>
-<td align="right">3659915</td>
-<td align="right">23847</td>
-<td align="right">0.49</td>
-<td align="right">0.01</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:EXDEL-DEL</td>
 <td align="right">0</td>
 <td align="right">-3</td>
 <td align="right">-2</td>
-<td align="left">benefit</td>
-<td align="right">0.01</td>
-<td align="right">0.02</td>
-<td align="right">-26.45</td>
-<td align="right">0.01</td>
-<td align="right">0.50</td>
-<td align="right">90.72</td>
-<td align="right">0.99</td>
-<td align="right">0</td>
-<td align="right">0.01</td>
-<td align="right">6.03</td>
-<td align="right">14155</td>
-<td align="right">14</td>
-<td align="right">3659915</td>
-<td align="right">669</td>
-<td align="right">0.49</td>
-<td align="right">0.01</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
-<td align="right">0.00</td>
 <td align="right">1</td>
+<td align="right">0.01</td>
+<td align="right">0.06</td>
+<td align="right">5.57</td>
+<td align="right">1075</td>
+<td align="right">131</td>
+<td align="right">25633</td>
+<td align="right">760</td>
+<td align="right">-0.48</td>
+<td align="right">0.83</td>
+<td align="right">0.46</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">-2309.41</td>
+<td align="right">4.74</td>
+<td align="right">0.99</td>
+<td align="right">49.97</td>
+<td align="right">1.00</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">0.01</td>
 </tr>
 <tr class="even">
-<td align="left">Ayon</td>
+<td align="left">Qa</td>
 <td align="left">tree</td>
 <td align="left">0:EXDEL-EXDEL</td>
 <td align="right">0</td>
 <td align="right">-3</td>
 <td align="right">-3</td>
-<td align="left">sdelet</td>
+<td align="right">0</td>
+<td align="right">0.02</td>
 <td align="right">0.00</td>
-<td align="right">0.30</td>
-<td align="right">-308.69</td>
+<td align="right">0.09</td>
+<td align="right">333</td>
+<td align="right">31</td>
+<td align="right">4890</td>
+<td align="right">4596</td>
+<td align="right">-0.50</td>
+<td align="right">-0.65</td>
+<td align="right">0.47</td>
+<td align="right">0</td>
 <td align="right">0.03</td>
-<td align="right">0.02</td>
-<td align="right">2.85</td>
-<td align="right">0.07</td>
-<td align="right">0</td>
-<td align="right">0.00</td>
-<td align="right">0.98</td>
-<td align="right">14155</td>
-<td align="right">6</td>
-<td align="right">3659915</td>
-<td align="right">1970</td>
-<td align="right">0.85</td>
-<td align="right">0.06</td>
+<td align="right">-4916.59</td>
+<td align="right">0.59</td>
 <td align="right">0.05</td>
+<td align="right">9.37</td>
+<td align="right">0.99</td>
+<td align="right">0.01</td>
 <td align="right">0.02</td>
-<td align="right">0.00</td>
-<td align="right">0</td>
+<td align="right">0.08</td>
+<td align="right">0.84</td>
 </tr>
 </tbody>
 </table>
@@ -968,22 +1010,39 @@ head( dfe_sift) %&gt;% kable(digits = 2)</code></pre>
 <p>Removing obs with too high <span class="math inline">\(\epsilon_{anc}\)</span></p>
 <p>I n what follows I use the subset obtained with the condition <code>filter(cat04==0)</code> to generate <code>df_tofit</code> used throughout for fitting . NB Filtering on <code>eps</code> means 15% data obs removed but I think it is needed in order to avoid weird outliers</p>
 <pre class="r"><code>dim(dfe_sift)</code></pre>
-<pre><code>[1] 507  27</code></pre>
+<pre><code>[1] 322  28</code></pre>
 <pre class="r"><code>species_low_nchr &lt;- c(&quot;Qmango&quot;, &quot;Shua&quot;, &quot;Bnana&quot;)
 dfe_sift &lt;- dfe_sift %&gt;%  
   filter(!(species %in% species_low_nchr)) %&gt;%
   filter(eps &lt;0.1)  # 
 dim(dfe_sift)</code></pre>
-<pre><code>[1] 387  27</code></pre>
+<pre><code>[1] 322  28</code></pre>
 <pre class="r"><code>dim(dfe_sift)</code></pre>
-<pre><code>[1] 387  27</code></pre>
-<pre class="r"><code>(507-387)/507 #data loss</code></pre>
-<pre><code>[1] 0.2366864</code></pre>
-<pre class="r"><code>dfe_sift %&gt;% filter(cat04==0) -&gt; df_tofit
+<pre><code>[1] 322  28</code></pre>
+<pre class="r"><code>table(dfe_sift$category)</code></pre>
+<pre><code>
+      0:DEL-DEL     0:DEL-EXDEL    0:DEL-STABLE       0:DEL-TOL     0:EXDEL-DEL 
+             22              19              22              22              16 
+  0:EXDEL-EXDEL  0:EXDEL-STABLE     0:EXDEL-TOL    0:STABLE-DEL  0:STABLE-EXDEL 
+             12              22              16              22              22 
+0:STABLE-STABLE    0:STABLE-TOL       0:TOL-DEL     0:TOL-EXDEL    0:TOL-STABLE 
+             18              22              22              21              22 
+      0:TOL-TOL 
+             22 </code></pre>
+<pre class="r"><code># dfe_sift %&gt;% filter(cat04==0) -&gt; df_tofit
+dfe_sift  -&gt; df_tofit
+
 dim(df_tofit)</code></pre>
-<pre><code>[1] 336  27</code></pre>
+<pre><code>[1] 322  28</code></pre>
+<pre class="r"><code>names(df_tofit)</code></pre>
+<pre><code> [1] &quot;species&quot;     &quot;group&quot;       &quot;category&quot;    &quot;fold&quot;        &quot;from&quot;       
+ [6] &quot;to&quot;          &quot;delta&quot;       &quot;PiS&quot;         &quot;PiN&quot;         &quot;PiNPiS&quot;     
+[11] &quot;syn_counts&quot;  &quot;nsyn_counts&quot; &quot;Lsyn&quot;        &quot;Lnsyn&quot;       &quot;TD4&quot;        
+[16] &quot;TD0&quot;         &quot;GC3&quot;         &quot;gradient&quot;    &quot;eps&quot;         &quot;Sd&quot;         
+[21] &quot;beta&quot;        &quot;pb&quot;          &quot;Sb&quot;          &quot;alpha&quot;       &quot;D1&quot;         
+[26] &quot;D2&quot;          &quot;D3&quot;          &quot;D4&quot;         </code></pre>
 <pre class="r"><code>length(unique(df_tofit$species))</code></pre>
-<pre><code>[1] 23</code></pre>
+<pre><code>[1] 22</code></pre>
 </div>
 <div id="dependent-variable-fracp_0p_4" class="section level1">
 <h1>Dependent variable : <span class="math inline">\(\frac{P_0}{P_4}\)</span></h1>
@@ -992,7 +1051,7 @@ dim(df_tofit)</code></pre>
 <pre class="r"><code>df_tofit$PiNPiScor &lt;- (df_tofit$nsyn_counts+1)*(df_tofit$Lsyn+1)/((df_tofit$Lnsyn+1)*(df_tofit$syn_counts+1)) 
 
 df_tofit %&gt;%
-  filter(cat04==0) %&gt;%
+  # filter(cat04==0) %&gt;%
   ggplot(aes(x=delta, y=PiNPiScor, weight=(1+nsyn_counts)) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter(width = 0.2, aes(size = nsyn_counts)) + 
@@ -1048,8 +1107,8 @@ Thomas Bataillon
 <div id="a-linear-fit-for-each-species-separately" class="section level2">
 <h2>A (linear) fit for each species separately</h2>
 <pre class="r"><code>df_tofit %&gt;%
-  filter(cat04==0) %&gt;%
-  ggplot(aes(x=delta, y=PiNPiScor, color=species, weight=sqrt((1+nsyn_counts))) )+ 
+  # filter(cat04==0) %&gt;%
+  ggplot(aes(x=delta, y=PiNPiScor, weight=sqrt((1+nsyn_counts))) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter(width = 0.2, aes(size = nsyn_counts)) + 
   scale_y_log10() +
@@ -1060,7 +1119,7 @@ Thomas Bataillon
   ylab(&quot;corrected P0/P4&quot;)+
   scale_color_viridis_d(direction = -1)+
   theme(legend.position = &quot;none&quot;)+
-  NULL</code></pre>
+  NULL# ggsave(&quot;manuscript_GBE/manuscript_GBE_Jun2/figures_update_Feb2020/corrected_p0p4_delta_manyslopes.pdf&quot;,device = &quot;pdf&quot;)</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
@@ -1099,12 +1158,11 @@ Thomas Bataillon
 </table>
 </div>
 </div>
-<pre class="r"><code># ggsave(&quot;manuscript_GBE/manuscript_GBE_Jun2/figures_update_Feb2020/corrected_p0p4_delta_manyslopes.pdf&quot;,device = &quot;pdf&quot;)</code></pre>
 </div>
 <div id="linear-mixed-models" class="section level2">
 <h2>Linear (mixed) models</h2>
 <pre class="r"><code>dim(df_tofit)</code></pre>
-<pre><code>[1] 336  28</code></pre>
+<pre><code>[1] 322  29</code></pre>
 <pre class="r"><code>df_tofit$weights &lt;- sqrt(df_tofit$nsyn_counts)
 
 qplot(log10(df_tofit$PiNPiScor), bins = 25)</code></pre>
@@ -1164,44 +1222,46 @@ lm(formula = log(PiNPiScor) ~ delta, data = df_tofit)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.0530 -0.6227 -0.0312  0.5849  3.8786 
+-3.0001 -0.6308 -0.0714  0.5888  4.1915 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -0.08764    0.05902  -1.485    0.139    
-delta        1.05637    0.03635  29.065   &lt;2e-16 ***
+(Intercept) -0.65193    0.05637  -11.56   &lt;2e-16 ***
+delta        1.00326    0.03484   28.80   &lt;2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 1.081 on 334 degrees of freedom
-Multiple R-squared:  0.7167,    Adjusted R-squared:  0.7158 
-F-statistic: 844.8 on 1 and 334 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.011 on 320 degrees of freedom
+Multiple R-squared:  0.7216,    Adjusted R-squared:  0.7207 
+F-statistic: 829.3 on 1 and 320 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre class="r"><code># plot(naive)
 
 AIC(naive)</code></pre>
-<pre><code>[1] 1010.021</code></pre>
-<pre class="r"><code>mixed_1 &lt;-lmer(formula = log(PiNPiScor) ~ delta +(1|species) , 
+<pre><code>[1] 924.9761</code></pre>
+<pre class="r"><code>mixed_1 &lt;-lmer(formula = log(PiNPiScor) ~ delta +(1|species) + GC3, 
      data = df_tofit, REML =F )
 
 merTools::modelInfo(mixed_1)</code></pre>
-<pre><code>  n.obs n.lvls     AIC    sigma
-1   336      1 1011.67 1.070842</code></pre>
+<pre><code>  n.obs n.lvls      AIC     sigma
+1   322      1 917.0645 0.9594275</code></pre>
 <pre class="r"><code>lmerTest::ranova(mixed_1) </code></pre>
 <pre><code>ANOVA-like table for random-effects: Single term deletions
 
 Model:
-log(PiNPiScor) ~ delta + (1 | species)
-              npar  logLik    AIC     LRT Df Pr(&gt;Chisq)
-&lt;none&gt;           4 -501.84 1011.7                      
-(1 | species)    3 -502.01 1010.0 0.35022  1      0.554</code></pre>
-<pre class="r"><code>mixed_2 &lt;-lmer(formula = log(PiNPiScor) ~  delta +(0 + delta |species), 
+log(PiNPiScor) ~ delta + GC3 + (1 | species)
+              npar  logLik    AIC    LRT Df Pr(&gt;Chisq)    
+&lt;none&gt;           5 -453.53 917.06                         
+(1 | species)    4 -458.99 925.98 10.916  1  0.0009534 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>mixed_2 &lt;-lmer(formula = log(PiNPiScor) ~  delta +(0 + delta |species) + GC3, 
      data = df_tofit,  REML =F )
 
 AIC(mixed_2)</code></pre>
-<pre><code>[1] 971.8783</code></pre>
+<pre><code>[1] 921.301</code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_2) </code></pre>
-<pre><code>  n.obs n.lvls      AIC    sigma
-1   336      1 971.8783 0.963824</code></pre>
+<pre><code>  n.obs n.lvls     AIC     sigma
+1   322      1 921.301 0.9702108</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_1)) # estimated random effects (intercepts) for each sp</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -1244,32 +1304,34 @@ Thomas Bataillon
 <pre class="r"><code>summary(mixed_2)</code></pre>
 <pre><code>Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
   method [lmerModLmerTest]
-Formula: log(PiNPiScor) ~ delta + (0 + delta | species)
+Formula: log(PiNPiScor) ~ delta + (0 + delta | species) + GC3
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   971.9    987.1   -481.9    963.9      332 
+   921.3    940.2   -455.7    911.3      317 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.6383 -0.5812 -0.0412  0.5825  2.9437 
+-2.8074 -0.6370 -0.0664  0.5968  3.2289 
 
 Random effects:
  Groups   Name  Variance Std.Dev.
- species  delta 0.08705  0.2950  
- Residual       0.92896  0.9638  
-Number of obs: 336, groups:  species, 23
+ species  delta 0.02863  0.1692  
+ Residual       0.94131  0.9702  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
              Estimate Std. Error        df t value Pr(&gt;|t|)    
-(Intercept)  -0.08130    0.05268 313.74534  -1.543    0.124    
-delta         1.06093    0.06956  23.23021  15.252 1.35e-13 ***
+(Intercept)  -1.22692    0.57135 301.09865  -2.147   0.0326 *  
+delta         1.01025    0.04923  20.21591  20.522 5.22e-15 ***
+GC3           1.21302    1.19566 301.04356   1.015   0.3111    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
-      (Intr)
-delta 0.017 </code></pre>
+      (Intr) delta 
+delta -0.016       
+GC3   -0.996  0.018</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_2)) # estimated random effects (slopes) for each sp relative to the common slope</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-4-3.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -1326,24 +1388,24 @@ knitr::kable(df_table, digits = 2, col.names = c(&quot;Models for P0/P4 ratio&qu
 <tbody>
 <tr class="odd">
 <td align="left">lm no slope</td>
-<td align="right">1431.74</td>
+<td align="right">1334.67</td>
 </tr>
 <tr class="even">
 <td align="left">lm slope</td>
-<td align="right">1010.02</td>
+<td align="right">924.98</td>
 </tr>
 <tr class="odd">
 <td align="left">random intercept</td>
-<td align="right">1011.67</td>
+<td align="right">917.06</td>
 </tr>
 <tr class="even">
 <td align="left">random slope</td>
-<td align="right">971.88</td>
+<td align="right">921.30</td>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>1 - (deviance(mixed_2) /(1011.67-1))</code></pre>
-<pre><code>[1] 0.04629771</code></pre>
+<pre class="r"><code>1 - (deviance(mixed_2) /(1334.67))</code></pre>
+<pre><code>[1] 0.3172088</code></pre>
 </div>
 <div id="tech-check-influence-of-eps" class="section level2">
 <h2>Tech check: influence of eps</h2>
@@ -1356,48 +1418,50 @@ lm(formula = log(PiNPiScor) ~ eps, data = df_tofit)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--7.0381 -1.2568 -0.4835  0.8376  7.0708 
+-4.7010 -1.1764 -0.3760  0.5029  7.4718 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)  -0.2153     0.1270  -1.695    0.091 .
-eps           6.0722     5.3377   1.138    0.256  
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -0.9601     0.1200  -8.004 2.25e-14 ***
+eps          14.3176     3.2290   4.434 1.27e-05 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.027 on 334 degrees of freedom
-Multiple R-squared:  0.00386,   Adjusted R-squared:  0.0008773 
-F-statistic: 1.294 on 1 and 334 DF,  p-value: 0.2561</code></pre>
-<pre class="r"><code>naive &lt;- lm(log(PiNPiScor) ~ eps + delta , 
+Residual standard error: 1.86 on 320 degrees of freedom
+Multiple R-squared:  0.05788,   Adjusted R-squared:  0.05494 
+F-statistic: 19.66 on 1 and 320 DF,  p-value: 1.273e-05</code></pre>
+<pre class="r"><code>naive &lt;- lm(log(PiNPiScor) ~ eps + delta + GC3, 
             data = df_tofit) 
 summary(naive)</code></pre>
 <pre><code>
 Call:
-lm(formula = log(PiNPiScor) ~ eps + delta, data = df_tofit)
+lm(formula = log(PiNPiScor) ~ eps + delta + GC3, data = df_tofit)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5.1126 -0.5786 -0.0008  0.5477  3.7524 
+-2.9375 -0.6546 -0.0559  0.5646  4.0778 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  0.005279   0.067501   0.078  0.93771    
-eps         -7.866433   2.858775  -2.752  0.00625 ** 
-delta        1.073022   0.036498  29.399  &lt; 2e-16 ***
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.17284    0.59173  -1.982   0.0483 *  
+eps         -3.86523    1.86450  -2.073   0.0390 *  
+delta        1.03108    0.03702  27.854   &lt;2e-16 ***
+GC3          1.24931    1.23655   1.010   0.3131    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 1.071 on 333 degrees of freedom
-Multiple R-squared:  0.7229,    Adjusted R-squared:  0.7213 
-F-statistic: 434.5 on 2 and 333 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.006 on 318 degrees of freedom
+Multiple R-squared:  0.7261,    Adjusted R-squared:  0.7235 
+F-statistic:   281 on 3 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre class="r"><code>anova(naive, test = &quot;F&quot;)</code></pre>
 <pre><code>Analysis of Variance Table
 
 Response: log(PiNPiScor)
-           Df Sum Sq Mean Sq  F value  Pr(&gt;F)    
-eps         1   5.32    5.32   4.6393 0.03197 *  
-delta       1 990.98  990.98 864.3094 &lt; 2e-16 ***
-Residuals 333 381.80    1.15                     
+           Df Sum Sq Mean Sq  F value    Pr(&gt;F)    
+eps         1  68.02   68.02  67.2088 6.075e-15 ***
+delta       1 784.29  784.29 774.8765 &lt; 2.2e-16 ***
+GC3         1   1.03    1.03   1.0207    0.3131    
+Residuals 318 321.86    1.01                       
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>car::vif(naive)</code></pre>
@@ -1407,34 +1471,36 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
   cooks.distance.influence.merMod lme4
   dfbeta.influence.merMod         lme4
   dfbetas.influence.merMod        lme4</code></pre>
-<pre><code>     eps    delta 
-1.028283 1.028283 </code></pre>
+<pre><code>     eps    delta      GC3 
+1.139763 1.140597 1.000781 </code></pre>
 <pre class="r"><code># plot(naive)
 
 AIC(naive)</code></pre>
-<pre><code>[1] 1004.466</code></pre>
-<pre class="r"><code>mixed_1 &lt;-lmer(formula = log(PiNPiScor) ~ eps + delta +(1|species) , 
+<pre><code>[1] 923.6579</code></pre>
+<pre class="r"><code>mixed_1 &lt;-lmer(formula = log(PiNPiScor) ~ eps + delta +(1|species) + GC3, 
      data = df_tofit, REML =F )
 
 merTools::modelInfo(mixed_1)</code></pre>
-<pre><code>  n.obs n.lvls      AIC    sigma
-1   336      1 1005.487 1.053509</code></pre>
+<pre><code>  n.obs n.lvls     AIC     sigma
+1   322      1 914.672 0.9530258</code></pre>
 <pre class="r"><code>lmerTest::ranova(mixed_1) </code></pre>
 <pre><code>ANOVA-like table for random-effects: Single term deletions
 
 Model:
-log(PiNPiScor) ~ eps + delta + (1 | species)
-              npar  logLik    AIC     LRT Df Pr(&gt;Chisq)
-&lt;none&gt;           5 -497.74 1005.5                      
-(1 | species)    4 -498.23 1004.5 0.97877  1     0.3225</code></pre>
-<pre class="r"><code>mixed_2 &lt;-lmer(formula = log(PiNPiScor) ~  eps + delta +(0 + delta |species), 
+log(PiNPiScor) ~ eps + delta + GC3 + (1 | species)
+              npar  logLik    AIC    LRT Df Pr(&gt;Chisq)    
+&lt;none&gt;           6 -451.34 914.67                         
+(1 | species)    5 -456.83 923.66 10.986  1  0.0009181 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>mixed_2 &lt;-lmer(formula = log(PiNPiScor) ~  eps + delta +(0 + delta |species) +GC3, 
      data = df_tofit,  REML =F )
 
 AIC(mixed_2)</code></pre>
-<pre><code>[1] 964.0875</code></pre>
+<pre><code>[1] 916.6742</code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_2) </code></pre>
 <pre><code>  n.obs n.lvls      AIC     sigma
-1   336      1 964.0875 0.9486668</code></pre>
+1   322      1 916.6742 0.9566721</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_1)) # estimated random effects (intercepts) for each sp</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -1477,34 +1543,36 @@ Thomas Bataillon
 <pre class="r"><code>summary(mixed_2)</code></pre>
 <pre><code>Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
   method [lmerModLmerTest]
-Formula: log(PiNPiScor) ~ eps + delta + (0 + delta | species)
+Formula: log(PiNPiScor) ~ eps + delta + (0 + delta | species) + GC3
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   964.1    983.2   -477.0    954.1      331 
+   916.7    939.3   -452.3    904.7      316 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.7382 -0.5563 -0.0578  0.5964  3.2749 
+-2.7872 -0.6122 -0.0811  0.5955  3.3003 
 
 Random effects:
  Groups   Name  Variance Std.Dev.
- species  delta 0.08844  0.2974  
- Residual       0.89997  0.9487  
-Number of obs: 336, groups:  species, 23
+ species  delta 0.03387  0.1840  
+ Residual       0.91522  0.9567  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
              Estimate Std. Error        df t value Pr(&gt;|t|)    
-(Intercept)   0.01738    0.06055 317.42835   0.287  0.77422    
-eps          -8.29817    2.63066 324.65735  -3.154  0.00176 ** 
-delta         1.07896    0.06999  23.48516  15.415 8.86e-14 ***
+(Intercept)  -1.12812    0.56476 301.63540  -1.998   0.0467 *  
+eps          -4.82117    1.84767 321.68074  -2.609   0.0095 ** 
+delta         1.04440    0.05288  22.81322  19.751 7.65e-16 ***
+GC3           1.19834    1.17927 300.91162   1.016   0.3104    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
-      (Intr) eps   
-eps   -0.516       
-delta  0.056 -0.081</code></pre>
+      (Intr) eps    delta 
+eps   -0.066              
+delta  0.001 -0.243       
+GC3   -0.994  0.004  0.015</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_2)) # estimated random effects (slopes) for each sp relative to the common slope</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-7-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -1558,19 +1626,19 @@ knitr::kable(df_table, digits = 2, col.names = c(&quot;Models for P0/P4 ratio&qu
 <tbody>
 <tr class="odd">
 <td align="left">lm no slope</td>
-<td align="right">1432.44</td>
+<td align="right">1317.47</td>
 </tr>
 <tr class="even">
 <td align="left">lm slope</td>
-<td align="right">1004.47</td>
+<td align="right">923.66</td>
 </tr>
 <tr class="odd">
 <td align="left">random intercept</td>
-<td align="right">1005.49</td>
+<td align="right">914.67</td>
 </tr>
 <tr class="even">
 <td align="left">random slope</td>
-<td align="right">964.09</td>
+<td align="right">916.67</td>
 </tr>
 </tbody>
 </table>
@@ -1633,16 +1701,16 @@ table(df_tofit$benef_mut) %&gt;% kable(col.names = c(&quot;benef_mut&quot;, &quo
 <tbody>
 <tr class="odd">
 <td align="left">0</td>
-<td align="right">194</td>
+<td align="right">152</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="right">142</td>
+<td align="right">170</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>  df_tofit %&gt;%
-  ggplot(aes(x=delta, y=benef_mut, color=species, weight=sqrt((1+nsyn_counts))) )+ 
+  ggplot(aes(x=delta, y=benef_mut, weight=sqrt((1+nsyn_counts))) )+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.15, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = &quot;glm&quot;,
@@ -1701,7 +1769,7 @@ Thomas Bataillon
 <h2>Linear (mixed) models</h2>
 <pre class="r"><code># df_tofit&lt;- df_tofit[-c(247),] # 1 mega outlier
 dim(df_tofit)</code></pre>
-<pre><code>[1] 336  30</code></pre>
+<pre><code>[1] 322  31</code></pre>
 <pre class="r"><code>df_tofit$weights &lt;- sqrt(df_tofit$nsyn_counts)
 
 
@@ -1714,56 +1782,55 @@ glm(formula = benef_mut ~ 1, family = &quot;binomial&quot;, data = df_tofit)
 
 Deviance Residuals: 
    Min      1Q  Median      3Q     Max  
--1.048  -1.048  -1.048   1.312   1.312  
+-1.225  -1.225   1.130   1.130   1.130  
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)   
-(Intercept)  -0.3120     0.1104  -2.825  0.00472 **
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+            Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)   0.1119     0.1116   1.003    0.316
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 457.71  on 335  degrees of freedom
-Residual deviance: 457.71  on 335  degrees of freedom
-AIC: 459.71
+    Null deviance: 445.38  on 321  degrees of freedom
+Residual deviance: 445.38  on 321  degrees of freedom
+AIC: 447.38
 
-Number of Fisher Scoring iterations: 4</code></pre>
+Number of Fisher Scoring iterations: 3</code></pre>
 <pre class="r"><code>naive0$deviance</code></pre>
-<pre><code>[1] 457.7148</code></pre>
-<pre class="r"><code>naive &lt;- glm(benef_mut  ~ delta , family = &quot;binomial&quot;,
+<pre><code>[1] 445.38</code></pre>
+<pre class="r"><code>naive &lt;- glm(benef_mut  ~ delta + GC3 , family = &quot;binomial&quot;,
             data = df_tofit) 
 summary(naive)</code></pre>
 <pre><code>
 Call:
-glm(formula = benef_mut ~ delta, family = &quot;binomial&quot;, data = df_tofit)
+glm(formula = benef_mut ~ delta + GC3, family = &quot;binomial&quot;, data = df_tofit)
 
 Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.6586  -0.5524  -0.2926   0.8434   2.9893  
+     Min        1Q    Median        3Q       Max  
+-1.60990  -0.37654   0.01403   0.24966   2.33819  
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.4760     0.1519  -3.133  0.00173 ** 
-delta         1.3268     0.1418   9.355  &lt; 2e-16 ***
+(Intercept)   2.7715     2.0184   1.373     0.17    
+delta         2.8966     0.3647   7.943 1.98e-15 ***
+GC3          -4.7360     4.2077  -1.126     0.26    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 457.71  on 335  degrees of freedom
-Residual deviance: 280.73  on 334  degrees of freedom
-AIC: 284.73
+    Null deviance: 445.38  on 321  degrees of freedom
+Residual deviance: 154.73  on 319  degrees of freedom
+AIC: 160.73
 
-Number of Fisher Scoring iterations: 5</code></pre>
+Number of Fisher Scoring iterations: 7</code></pre>
 <pre class="r"><code>anova(naive0, naive, test=&quot;Chisq&quot;)</code></pre>
 <pre><code>Analysis of Deviance Table
 
 Model 1: benef_mut ~ 1
-Model 2: benef_mut ~ delta
+Model 2: benef_mut ~ delta + GC3
   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
-1       335     457.71                          
-2       334     280.73  1   176.99 &lt; 2.2e-16 ***
+1       321     445.38                          
+2       319     154.73  2   290.65 &lt; 2.2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>plot(naive)</code></pre>
@@ -1920,14 +1987,14 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>1 - (naive$deviance/naive0$deviance) # pseudo R^2 </code></pre>
-<pre><code>[1] 0.3866719</code></pre>
+<pre><code>[1] 0.6525807</code></pre>
 <pre class="r"><code>AIC(naive)</code></pre>
-<pre><code>[1] 284.7294</code></pre>
+<pre><code>[1] 160.7336</code></pre>
 <pre class="r"><code>mixed_1 &lt;-glmer(benef_mut ~ delta +(1|species) , family = &quot;binomial&quot;,
      data = df_tofit )
 
 AIC(mixed_1)</code></pre>
-<pre><code>[1] 281.085</code></pre>
+<pre><code>[1] 161.5645</code></pre>
 <pre class="r"><code>summary(mixed_1)</code></pre>
 <pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
   Approximation) [glmerMod]
@@ -1936,35 +2003,35 @@ Formula: benef_mut ~ delta + (1 | species)
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   281.1    292.5   -137.5    275.1      333 
+   161.6    172.9    -77.8    155.6      319 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--5.2346 -0.3862 -0.1435  0.3912  6.8791 
+-1.5858 -0.2553  0.0084  0.1698  3.1883 
 
 Random effects:
  Groups  Name        Variance Std.Dev.
- species (Intercept) 0.4739   0.6884  
-Number of obs: 336, groups:  species, 23
+ species (Intercept) 0.2315   0.4811  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.5253     0.2166  -2.425   0.0153 *  
-delta         1.4335     0.1589   9.022   &lt;2e-16 ***
+(Intercept)   0.5604     0.2471   2.268   0.0233 *  
+delta         2.9841     0.4084   7.307 2.73e-13 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
       (Intr)
-delta -0.175</code></pre>
+delta 0.321 </code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_1)</code></pre>
-<pre><code>  n.obs n.lvls     AIC sigma
-1   336      1 281.085     1</code></pre>
+<pre><code>  n.obs n.lvls      AIC sigma
+1   322      1 161.5645     1</code></pre>
 <pre class="r"><code>mixed_2 &lt;-glmer(formula = benef_mut ~  delta +(0 + delta |species), family = &quot;binomial&quot;,
      data = df_tofit)
 
 AIC(mixed_2)</code></pre>
-<pre><code>[1] 262.415</code></pre>
+<pre><code>[1] 161.3266</code></pre>
 <pre class="r"><code>summary(mixed_2)</code></pre>
 <pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
   Approximation) [glmerMod]
@@ -1973,30 +2040,30 @@ Formula: benef_mut ~ delta + (0 + delta | species)
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   262.4    273.9   -128.2    256.4      333 
+   161.3    172.7    -77.7    155.3      319 
 
 Scaled residuals: 
-    Min      1Q  Median      3Q     Max 
--3.6050 -0.3534 -0.0513  0.3376  3.5818 
+     Min       1Q   Median       3Q      Max 
+-1.29986 -0.23234  0.00439  0.13751  3.10008 
 
 Random effects:
  Groups  Name  Variance Std.Dev.
- species delta 1.315    1.147   
-Number of obs: 336, groups:  species, 23
+ species delta 0.826    0.9088  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.5321     0.1656  -3.214  0.00131 ** 
-delta         2.0944     0.4051   5.169 2.35e-07 ***
+(Intercept)   0.5245     0.2100   2.498   0.0125 *  
+delta         3.2629     0.6507   5.015 5.32e-07 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
       (Intr)
-delta -0.130</code></pre>
+delta 0.162 </code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_2) </code></pre>
-<pre><code>  n.obs n.lvls     AIC sigma
-1   336      1 262.415     1</code></pre>
+<pre><code>  n.obs n.lvls      AIC sigma
+1   322      1 161.3266     1</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_1)) # estimated random effects (intercepts) for each sp</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-10-5.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -2092,101 +2159,126 @@ knitr::kable(df_table, digits = 2, col.names = c(&quot;Models for proportion ben
 <tbody>
 <tr class="odd">
 <td align="left">glm no slope</td>
-<td align="right">459.71</td>
+<td align="right">447.38</td>
 </tr>
 <tr class="even">
 <td align="left">glm with slope</td>
-<td align="right">284.73</td>
+<td align="right">160.73</td>
 </tr>
 <tr class="odd">
 <td align="left">glm with random intercept</td>
-<td align="right">281.08</td>
+<td align="right">161.56</td>
 </tr>
 <tr class="even">
 <td align="left">glm with random slope</td>
-<td align="right">262.41</td>
+<td align="right">161.33</td>
 </tr>
 </tbody>
 </table>
 <p>Some pseudo R^2 to compare with the linear models on the piNpiS ratio Using the deviance of <code>mixed_2</code> and comparing it to the most naive model (glm no slope) aka <code>naive0</code> yields a pseudo R^2:</p>
 <pre class="r"><code> 1 -(deviance(mixed_2)/naive0$deviance)</code></pre>
-<pre><code>[1] 0.516144</code></pre>
+<pre><code>[1] 0.6723806</code></pre>
 </div>
 </div>
 <div id="tech-check-with-eps-included-in-the-model" class="section level1">
 <h1>tech check with eps included in the model</h1>
-<pre class="r"><code>naive0 &lt;- glm(benef_mut  ~ eps , family = &quot;binomial&quot;,
+<pre class="r"><code>naive00 &lt;- glm(benef_mut  ~ 1 , family = &quot;binomial&quot;,
             data = df_tofit) 
-summary(naive0)</code></pre>
+
+naive0 &lt;- glm(benef_mut  ~ eps , family = &quot;binomial&quot;,
+            data = df_tofit) 
+
+# updated pseudo R2
+  1 -(deviance(naive0)/naive00$deviance)</code></pre>
+<pre><code>[1] 0.1099998</code></pre>
+<pre class="r"><code>summary(naive0)</code></pre>
 <pre><code>
 Call:
 glm(formula = benef_mut ~ eps, family = &quot;binomial&quot;, data = df_tofit)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--1.7952  -0.9635  -0.9568   1.3507   1.4153  
+-2.3566  -1.0345   0.3584   1.2800   1.3280  
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.5438     0.1298  -4.191 2.78e-05 ***
-eps          19.7114     5.7119   3.451 0.000559 ***
+(Intercept)  -0.3473     0.1322  -2.628  0.00859 ** 
+eps          30.6481     5.4826   5.590 2.27e-08 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 457.71  on 335  degrees of freedom
-Residual deviance: 444.68  on 334  degrees of freedom
-AIC: 448.68
+    Null deviance: 445.38  on 321  degrees of freedom
+Residual deviance: 396.39  on 320  degrees of freedom
+AIC: 400.39
 
 Number of Fisher Scoring iterations: 4</code></pre>
 <pre class="r"><code>naive0$deviance</code></pre>
-<pre><code>[1] 444.6848</code></pre>
-<pre class="r"><code>naive &lt;- glm(benef_mut  ~ eps + delta , family = &quot;binomial&quot;,
+<pre><code>[1] 396.3883</code></pre>
+<pre class="r"><code>naive &lt;- glm(benef_mut  ~ eps + delta + GC3, family = &quot;binomial&quot;,
             data = df_tofit) 
 summary(naive)</code></pre>
 <pre><code>
 Call:
-glm(formula = benef_mut ~ eps + delta, family = &quot;binomial&quot;, data = df_tofit)
+glm(formula = benef_mut ~ eps + delta + GC3, family = &quot;binomial&quot;, 
+    data = df_tofit)
 
 Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.5701  -0.5137  -0.2721   0.6350   2.9211  
+     Min        1Q    Median        3Q       Max  
+-1.58904  -0.36495   0.01508   0.24802   2.36236  
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.6695     0.1854  -3.611 0.000306 ***
-eps          12.6527     6.7851   1.865 0.062214 .  
-delta         1.3042     0.1418   9.196  &lt; 2e-16 ***
+(Intercept)   2.4569     2.0422   1.203    0.229    
+eps           9.1879     7.2332   1.270    0.204    
+delta         2.7935     0.3677   7.597 3.02e-14 ***
+GC3          -4.4566     4.2389  -1.051    0.293    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 457.71  on 335  degrees of freedom
-Residual deviance: 277.12  on 333  degrees of freedom
-AIC: 283.12
+    Null deviance: 445.38  on 321  degrees of freedom
+Residual deviance: 153.02  on 318  degrees of freedom
+AIC: 161.02
 
-Number of Fisher Scoring iterations: 5</code></pre>
+Number of Fisher Scoring iterations: 7</code></pre>
 <pre class="r"><code>anova(naive0, naive, test=&quot;Chisq&quot;)</code></pre>
 <pre><code>Analysis of Deviance Table
 
 Model 1: benef_mut ~ eps
-Model 2: benef_mut ~ eps + delta
+Model 2: benef_mut ~ eps + delta + GC3
   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
-1       334     444.68                          
-2       333     277.12  1   167.56 &lt; 2.2e-16 ***
+1       320     396.39                          
+2       318     153.02  2   243.36 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>anova(naive, test=&quot;Chisq&quot;)</code></pre>
+<pre><code>Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: benef_mut
+
+Terms added sequentially (first to last)
+
+      Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    
+NULL                    321     445.38              
+eps    1   48.992       320     396.39  2.57e-12 ***
+delta  1  242.246       319     154.14 &lt; 2.2e-16 ***
+GC3    1    1.118       318     153.02    0.2903    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>1 - (naive$deviance/naive0$deviance) # pseudo R^2 </code></pre>
-<pre><code>[1] 0.3768174</code></pre>
+<pre><code>[1] 0.6139544</code></pre>
 <pre class="r"><code>AIC(naive)</code></pre>
-<pre><code>[1] 283.1198</code></pre>
+<pre><code>[1] 161.024</code></pre>
 <pre class="r"><code>mixed_1 &lt;-glmer(benef_mut ~ eps + delta +(1|species) , family = &quot;binomial&quot;,
      data = df_tofit )
 
 AIC(mixed_1)</code></pre>
-<pre><code>[1] 278.2478</code></pre>
+<pre><code>[1] 161.6371</code></pre>
 <pre class="r"><code>summary(mixed_1)</code></pre>
 <pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
   Approximation) [glmerMod]
@@ -2195,37 +2287,37 @@ Formula: benef_mut ~ eps + delta + (1 | species)
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   278.2    293.5   -135.1    270.2      332 
+   161.6    176.7    -76.8    153.6      318 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--4.9130 -0.3566 -0.1126  0.4241  5.7448 
+-1.9716 -0.2447  0.0097  0.1679  3.2852 
 
 Random effects:
  Groups  Name        Variance Std.Dev.
- species (Intercept) 0.5647   0.7515  
-Number of obs: 336, groups:  species, 23
+ species (Intercept) 0.2584   0.5083  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.7972     0.2639  -3.021  0.00252 ** 
-eps          16.6332     7.7992   2.133  0.03295 *  
-delta         1.4224     0.1604   8.868  &lt; 2e-16 ***
+(Intercept)   0.3652     0.2818   1.296    0.195    
+eps          10.1930     7.6034   1.341    0.180    
+delta         2.8818     0.4095   7.037 1.96e-12 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
       (Intr) eps   
-eps   -0.493       
-delta -0.210  0.063</code></pre>
+eps   -0.451       
+delta  0.324 -0.097</code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_1)</code></pre>
 <pre><code>  n.obs n.lvls      AIC sigma
-1   336      1 278.2478     1</code></pre>
+1   322      1 161.6371     1</code></pre>
 <pre class="r"><code>mixed_2 &lt;-glmer(formula = benef_mut ~ eps +  delta +(0 + delta |species), family = &quot;binomial&quot;,
      data = df_tofit)
 
 AIC(mixed_2)</code></pre>
-<pre><code>[1] 263.2358</code></pre>
+<pre><code>[1] 161.3523</code></pre>
 <pre class="r"><code>summary(mixed_2)</code></pre>
 <pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
   Approximation) [glmerMod]
@@ -2234,32 +2326,32 @@ Formula: benef_mut ~ eps + delta + (0 + delta | species)
    Data: df_tofit
 
      AIC      BIC   logLik deviance df.resid 
-   263.2    278.5   -127.6    255.2      332 
+   161.4    176.5    -76.7    153.4      318 
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.4725 -0.3508 -0.0542  0.3461  3.8218 
+-1.9577 -0.2194  0.0055  0.1521  3.2427 
 
 Random effects:
  Groups  Name  Variance Std.Dev.
- species delta 1.219    1.104   
-Number of obs: 336, groups:  species, 23
+ species delta 0.8684   0.9319  
+Number of obs: 322, groups:  species, 22
 
 Fixed effects:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -0.6571     0.2032  -3.234  0.00122 ** 
-eps           8.1923     7.5323   1.088  0.27676    
-delta         2.0437     0.3969   5.149 2.62e-07 ***
+(Intercept)   0.3293     0.2483   1.326    0.185    
+eps          10.1583     7.5161   1.352    0.177    
+delta         3.1732     0.6475   4.901 9.53e-07 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Correlation of Fixed Effects:
       (Intr) eps   
-eps   -0.573       
-delta -0.064 -0.089</code></pre>
+eps   -0.521       
+delta  0.164 -0.051</code></pre>
 <pre class="r"><code>merTools::modelInfo(mixed_2) </code></pre>
 <pre><code>  n.obs n.lvls      AIC sigma
-1   336      1 263.2358     1</code></pre>
+1   322      1 161.3523     1</code></pre>
 <pre class="r"><code>plotREsim(REsim(mixed_1)) # estimated random effects (intercepts) for each sp</code></pre>
 <p><img src="figure/S1_Stat_models_deltaSIFT_DFEs.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
@@ -2339,10 +2431,10 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>car::vif(naive)</code></pre>
-<pre><code>     eps    delta 
-1.001045 1.001045 </code></pre>
+<pre><code>     eps    delta      GC3 
+1.028107 1.034791 1.010204 </code></pre>
 <pre class="r"><code> df_tofit %&gt;%
-  ggplot(aes(x=eps, y=benef_mut, color=species))+ 
+  ggplot(aes(x=eps, y=benef_mut))+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.0025, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = &quot;glm&quot;,
@@ -2393,10 +2485,10 @@ Thomas Bataillon
 </div>
 </div>
 <pre class="r"><code>car::vif(naive)</code></pre>
-<pre><code>     eps    delta 
-1.001045 1.001045 </code></pre>
+<pre><code>     eps    delta      GC3 
+1.028107 1.034791 1.010204 </code></pre>
 <pre class="r"><code> df_tofit %&gt;%
-  ggplot(aes(x=delta, y=benef_mut, color=species))+ 
+  ggplot(aes(x=delta, y=benef_mut))+ 
   # geom_point(aes(size = nsyn_counts)) + 
   geom_jitter( width = 0.0025, height = 0.05, aes(size = nsyn_counts)) + 
   geom_smooth(method = &quot;glm&quot;,
@@ -2448,7 +2540,7 @@ Thomas Bataillon
 </div>
 <pre class="r"><code> # updated pseudo R2
   1 -(deviance(mixed_2)/naive0$deviance)</code></pre>
-<pre><code>[1] 0.5023703</code></pre>
+<pre><code>[1] 0.6379991</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -2472,27 +2564,27 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] lmerTest_3.1-3  merTools_0.5.2  arm_1.11-2      MASS_7.3-51.6  
- [5] lme4_1.1-23     Matrix_1.2-18   knitr_1.30      magrittr_1.5   
- [9] dplyr_1.0.2     ggthemes_4.2.0  ggplot2_3.3.2   workflowr_1.6.2
+ [1] lmerTest_3.1-3 merTools_0.5.2 arm_1.11-2     MASS_7.3-51.6  lme4_1.1-26   
+ [6] Matrix_1.2-18  knitr_1.29     magrittr_1.5   dplyr_1.0.2    ggthemes_4.2.0
+[11] ggplot2_3.3.2 
 
 loaded via a namespace (and not attached):
  [1] nlme_3.1-148        fs_1.5.0            RColorBrewer_1.1-2 
- [4] rprojroot_1.3-2     numDeriv_2016.8-1.1 tools_4.0.2        
- [7] TMB_1.7.18          backports_1.1.8     R6_2.4.1           
-[10] rpart_4.1-15        Hmisc_4.4-2         mgcv_1.8-31        
+ [4] rprojroot_2.0.2     numDeriv_2016.8-1.1 tools_4.0.2        
+ [7] TMB_1.7.20          backports_1.1.9     R6_2.4.1           
+[10] rpart_4.1-15        Hmisc_4.5-0         mgcv_1.8-31        
 [13] colorspace_1.4-1    nnet_7.3-14         withr_2.2.0        
 [16] tidyselect_1.1.0    gridExtra_2.3       curl_4.3           
 [19] compiler_4.0.2      git2r_0.27.1        htmlTable_2.1.0    
 [22] labeling_0.3        scales_1.1.1        checkmate_2.0.0    
 [25] mvtnorm_1.1-1       blme_1.0-5          stringr_1.4.0      
 [28] digest_0.6.25       foreign_0.8-80      minqa_1.2.4        
-[31] rmarkdown_2.3       rio_0.5.16          base64enc_0.1-3    
+[31] rmarkdown_2.3       rio_0.5.26          base64enc_0.1-3    
 [34] jpeg_0.1-8.1        pkgconfig_2.0.3     htmltools_0.5.0    
 [37] fastmap_1.0.1       highr_0.8           readxl_1.3.1       
-[40] htmlwidgets_1.5.2   rlang_0.4.7         rstudioapi_0.11    
+[40] htmlwidgets_1.5.1   rlang_0.4.7         rstudioapi_0.11    
 [43] shiny_1.5.0         generics_0.0.2      farver_2.0.3       
-[46] broom.mixed_0.2.6   zip_2.1.1           car_3.0-9          
+[46] broom.mixed_0.2.6   zip_2.1.1           car_3.0-10         
 [49] Formula_1.2-4       Rcpp_1.0.5          munsell_0.5.0      
 [52] abind_1.4-5         lifecycle_0.2.0     stringi_1.4.6      
 [55] whisker_0.4         yaml_2.2.1          carData_3.0-4      
@@ -2504,12 +2596,12 @@ loaded via a namespace (and not attached):
 [73] latticeExtra_0.6-29 data.table_1.13.0   png_0.1-7          
 [76] vctrs_0.3.2         nloptr_1.2.2.2      httpuv_1.5.4       
 [79] foreach_1.5.1       cellranger_1.1.0    gtable_0.3.0       
-[82] purrr_0.3.4         tidyr_1.1.1         openxlsx_4.2.2     
-[85] xfun_0.19           mime_0.9            xtable_1.8-4       
+[82] purrr_0.3.4         tidyr_1.1.1         openxlsx_4.2.3     
+[85] xfun_0.16           mime_0.9            xtable_1.8-4       
 [88] broom_0.7.0         coda_0.19-4         later_1.1.0.1      
-[91] survival_3.1-12     viridisLite_0.3.0   tibble_3.0.3       
-[94] iterators_1.0.13    cluster_2.1.0       statmod_1.4.34     
-[97] ellipsis_0.3.1     </code></pre>
+[91] viridisLite_0.4.0   survival_3.1-12     tibble_3.0.3       
+[94] iterators_1.0.13    workflowr_1.6.2     cluster_2.1.0      
+[97] statmod_1.4.35      ellipsis_0.3.1     </code></pre>
 </div>
 </div>
 
@@ -2560,6 +2652,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
@@ -2571,7 +2668,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
