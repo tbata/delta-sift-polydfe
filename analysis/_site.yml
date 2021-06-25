@@ -9,8 +9,6 @@ navbar:
     href: S1_Stat_models_deltaSIFT_DFEs.html
   - text: Making figs
     href: S2_Summary_Figure_deltaSIFT_DFEs.html
-  - text: About
-    href: about.html
   - text: License
     href: license.html
   right:
